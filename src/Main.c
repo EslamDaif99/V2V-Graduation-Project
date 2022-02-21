@@ -9,6 +9,7 @@ int main(void)
 	while(1)
 	{
 		/* Process Logic */
+		OS_Update();
 	}
 	
 }
