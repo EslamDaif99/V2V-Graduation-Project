@@ -9,7 +9,7 @@ void OS_Init(void)
 {
 	OS_Tick = 0;
 
-	GPIO_Init();
+	GPIO_Init(GPIO_PORTA);
 	LED_Init();
 
 	/* OS Tick */
