@@ -2,12 +2,10 @@
 #include "GPIO.h"
 #include "Port.h"
 #include "Type.h"
+#include "BITMATH.h"
 
 #define LED_STATE_ON       (0XAB)
 #define LED_STATE_OFF      (0XEC)
-#define PORT               (GPIO_PORTA)
-#define LED_PIN_NUMBER     (GPIO_PIN_0)
-
 
 
 static uint08_t LED_state;

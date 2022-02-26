@@ -3,7 +3,7 @@
 
 #define PORT_HIGH 0xFF
 #define PORT_LOW 0x00
-
+typedef unsigned char uint08_t;
 typedef enum
 {
 	/* List the gpio ports */

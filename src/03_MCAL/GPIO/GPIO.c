@@ -1,4 +1,4 @@
-#include "Types.h"
+#include "Type.h"
 #include "BITMATH.h"
 #include "GPIO.h"
 #include "tm4c123gh6pm.h"

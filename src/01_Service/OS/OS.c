@@ -1,8 +1,13 @@
+#include <stdio.h>
+#include <stdint.h>
+
 #include "OS.h"
 #include "GPIO.h"
 #include "LED.h"
 #include "Type.h"
 #include "Timer.h"
+#include "BITMATH.h"
+
 static uint08_t OS_Tick;
 
 void OS_Init(void)

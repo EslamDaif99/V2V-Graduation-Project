@@ -1,6 +1,7 @@
 #include "Timer.h"
 #include "OS.h"
 #include "tm4c123gh6pm.h"
+#include "Type.h"
 
 static void inline enable_irq(void)
 {
