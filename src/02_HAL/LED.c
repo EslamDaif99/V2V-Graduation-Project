@@ -6,7 +6,7 @@
 #define LED_STATE_ON       (0XAB)
 #define LED_STATE_OFF      (0XEC)
 #define PORT               (GPIO_PORTA)
-#define LED_PIN_NUMBER     (0)
+#define LED_PIN_NUMBER     (GPIO_PIN_0)
 
 
 

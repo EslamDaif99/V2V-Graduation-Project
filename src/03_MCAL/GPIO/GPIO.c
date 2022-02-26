@@ -102,8 +102,6 @@ void GPIO_Init(GPIO_PORT_t port,GPIO_PIN_t pin)
 }
 
 
-/**GPIO_PORTF_CR_R**/
-
 void GPIO_SetPinDirection(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_Direction_t direction)
 {
 
