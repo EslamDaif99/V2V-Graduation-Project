@@ -1,6 +1,9 @@
 #ifndef _GPIO_H_
 #define	_GPIO_H_
 
+#define PORT_HIGH 0xFF
+#define PORT_LOW 0x00
+
 typedef enum
 {
 	/* List the gpio ports */
@@ -44,9 +47,12 @@ typedef enum
 }GPIO_State_t;
 
 
-void GPIO_Init(GPIO_PORT_t port);
+
+void GPIO_Init(GPIO_PORT_t port,GPIO_PIN_t pin);
 void GPIO_SetPinDirection(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_Direction_t direction);
 void GPIO_SetPinState(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_State_t state);
 GPIO_State_t GPIO_GetPinState(GPIO_PORT_t port,GPIO_PIN_t pin);
+void GPIO_SetPortDirection(GPIO_PORT_t port,GPIO_Direction_t direction);
+void GPIO_SetPortState(GPIO_PORT_t port,uint08_t state);
 
 #endif
