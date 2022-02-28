@@ -7,6 +7,7 @@
 #include "Type.h"
 #include "Timer.h"
 #include "BITMATH.h"
+#include "Port.h"
 
 static uint08_t OS_Tick;
 
@@ -14,7 +15,7 @@ void OS_Init(void)
 {
 	OS_Tick = 0;
 
-	GPIO_Init(GPIO_PORTA,GPIO_PIN_0);
+	GPIO_Init(PORT,LED_PIN_NUMBER);
 	
 	LED_Init();
 
