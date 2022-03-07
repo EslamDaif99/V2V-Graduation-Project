@@ -1,0 +1,314 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc GPIO.o
+ .group         0x00000000        0xc GPIO.o
+ .group         0x00000000        0xc GPIO.o
+ .group         0x00000000        0xc GPIO.o
+ .group         0x00000000        0xc LED.o
+ .group         0x00000000        0xc LED.o
+ .group         0x00000000        0xc LED.o
+ .group         0x00000000        0xc LED.o
+ .debug_macro   0x00000000      0xa54 LED.o
+ .debug_macro   0x00000000       0x10 LED.o
+ .debug_macro   0x00000000       0x22 LED.o
+ .group         0x00000000        0xc Main.o
+ .debug_macro   0x00000000      0xa54 Main.o
+ .group         0x00000000        0xc OS.o
+ .group         0x00000000        0xc OS.o
+ .group         0x00000000        0xc OS.o
+ .debug_macro   0x00000000      0xa54 OS.o
+ .debug_macro   0x00000000       0x10 OS.o
+ .debug_macro   0x00000000       0x16 OS.o
+ .group         0x00000000        0xc Startup.o
+ .debug_macro   0x00000000      0xa54 Startup.o
+ .group         0x00000000        0xc SysTick.o
+ .group         0x00000000        0xc SysTick.o
+ .group         0x00000000        0xc SysTick.o
+ .debug_macro   0x00000000      0xa54 SysTick.o
+ .debug_macro   0x00000000     0xb496 SysTick.o
+ .debug_macro   0x00000000       0x10 SysTick.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x00000000         0x00040000         xr
+SRAM             0x20000000         0x00008000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD GPIO.o
+LOAD LED.o
+LOAD Main.o
+LOAD OS.o
+LOAD Startup.o
+LOAD SysTick.o
+
+.text           0x00000000     0x1178
+                0x00000000                _stext = .
+ *(.isr_vector)
+ .isr_vector    0x00000000      0x26c Startup.o
+                0x00000000                vectorTable
+ *(.text)
+ .text          0x0000026c      0xc38 GPIO.o
+                0x0000026c                GPIO_Init
+                0x00000490                GPIO_SetPinDirection
+                0x000008cc                GPIO_SetPinState
+                0x00000a90                GPIO_GetPinState
+                0x00000b70                GPIO_SetPortDirection
+                0x00000d98                GPIO_SetPortState
+ .text          0x00000ea4       0x68 LED.o
+                0x00000ea4                LED_Init
+                0x00000ecc                LED_Update
+ .text          0x00000f0c        0xe Main.o
+                0x00000f0c                main
+ *fill*         0x00000f1a        0x2 
+ .text          0x00000f1c      0x16c OS.o
+                0x00000f1c                OS_Init
+                0x00000fd4                OS_Update
+                0x0000106c                OS_IncreamentTick
+ .text          0x00001088       0x98 Startup.o
+                0x00001088                _start
+                0x0000110c                DebugMon_Handler
+                0x0000110c                I2C0_IRQHandler
+                0x0000110c                PWM0_Generator0_IRQHandler
+                0x0000110c                HardFault_Handler
+                0x0000110c                TMR0B_16n32_IRQHandler
+                0x0000110c                TMR1B_16n32_IRQHandler
+                0x0000110c                PendSV_Handler
+                0x0000110c                NMI_Handler
+                0x0000110c                I2C1_IRQHandler
+                0x0000110c                SysException_IRQHandler
+                0x0000110c                UART1_IRQHandler
+                0x0000110c                CAN1_IRQHandler
+                0x0000110c                TMR5A_16n32_IRQHandler
+                0x0000110c                TMR0A_32n64_IRQHandler
+                0x0000110c                GPIO_D_IRQHandler
+                0x0000110c                uDMA_Error_IRQHandler
+                0x0000110c                TMR2B_32n64_IRQHandler
+                0x0000110c                UART0_IRQHandler
+                0x0000110c                SSI0_IRQHandler
+                0x0000110c                AnalogComparator1_IRQHandler
+                0x0000110c                TMR4A_32n64_IRQHandler
+                0x0000110c                UsageFault_Handler
+                0x0000110c                PWM0_Generator2_IRQHandler
+                0x0000110c                GPIO_A_IRQHandler
+                0x0000110c                Hibernation_IRQHandler
+                0x0000110c                TMR2A_32n64_IRQHandler
+                0x0000110c                TMR3A_32n64_IRQHandler
+                0x0000110c                TMR1B_32n64_IRQHandler
+                0x0000110c                ADC0_Sequence2_IRQHandler
+                0x0000110c                SSI1_IRQHandler
+                0x0000110c                I2C2_IRQHandler
+                0x0000110c                ADC1_Sequence3_IRQHandler
+                0x0000110c                SysControl_IRQHandler
+                0x0000110c                TMR3B_16n32_IRQHandler
+                0x0000110c                ADC0_Sequence3_IRQHandler
+                0x0000110c                PWM1_Generator2_IRQHandler
+                0x0000110c                UART5_IRQHandler
+                0x0000110c                TMR3B_32n64_IRQHandler
+                0x0000110c                TMR5B_16n32_IRQHandler
+                0x0000110c                GPIO_E_IRQHandler
+                0x0000110c                WWDG0n1_IRQHandler
+                0x0000110c                GPIO_C_IRQHandler
+                0x0000110c                TMR4A_16n32_IRQHandler
+                0x0000110c                UART2_IRQHandler
+                0x0000110c                AnalogComparator0_IRQHandler
+                0x0000110c                UART4_IRQHandler
+                0x0000110c                Default_Handler
+                0x0000110c                TMR4B_16n32_IRQHandler
+                0x0000110c                TMR3A_16n32_IRQHandler
+                0x0000110c                QEI1_IRQHandler
+                0x0000110c                ADC1_Sequence2_IRQHandler
+                0x0000110c                QEI0_IRQHandler
+                0x0000110c                USB_IRQHandler
+                0x0000110c                PWM_Generator3_IRQHandler
+                0x0000110c                I2C3_IRQHandler
+                0x0000110c                FlashEEPROMControl_IRQHandler
+                0x0000110c                uDMA_SW_IRQHandler
+                0x0000110c                GPIO_F_IRQHandler
+                0x0000110c                MemManage_Handler
+                0x0000110c                TMR2B_16n32_IRQHandler
+                0x0000110c                TMR5A_32n64_IRQHandler
+                0x0000110c                ADC1_Sequence1_IRQHandler
+                0x0000110c                SVC_Handler
+                0x0000110c                PWM0_Generator1_IRQHandler
+                0x0000110c                TMR2A_16n32_IRQHandler
+                0x0000110c                PWM1_Fault_IRQHandler
+                0x0000110c                TMR5B_32n64_IRQHandler
+                0x0000110c                PWM0_Fault_IRQHandler
+                0x0000110c                CAN0_IRQHandler
+                0x0000110c                TMR0B_32n64_IRQHandler
+                0x0000110c                TMR4B_32n64_IRQHandler
+                0x0000110c                TMR0A_16n32_IRQHandler
+                0x0000110c                SSI2_IRQHandler
+                0x0000110c                PWM1_Generator3_IRQHandler
+                0x0000110c                UART7_IRQHandler
+                0x0000110c                ADC0_Sequence1_IRQHandler
+                0x0000110c                UART6_IRQHandler
+                0x0000110c                ADC1_Sequence0_IRQHandler
+                0x0000110c                PWM1_Generator1_IRQHandler
+                0x0000110c                BusFault_Handler
+                0x0000110c                SSI3_IRQHandler
+                0x0000110c                UART3_IRQHandler
+                0x0000110c                GPIO_B_IRQHandler
+                0x0000110c                PWM1_Generator0_IRQHandler
+                0x0000110c                ADC0_Sequence0_IRQHandler
+                0x0000110c                TMR1A_16n32_IRQHandler
+                0x0000110c                TMR1A_32n64_IRQHandler
+                0x00001112                Reset_Handler
+ .text          0x00001120       0x58 SysTick.o
+                0x0000112e                SysTick_Init
+                0x00001160                SysTick_Handler
+                0x0000116c                SysTick_Update
+ *(.rodata)
+                0x00001178                . = ALIGN (0x4)
+                0x00001178                _etext = .
+
+.glue_7         0x00001178        0x0
+ .glue_7        0x00001178        0x0 linker stubs
+
+.glue_7t        0x00001178        0x0
+ .glue_7t       0x00001178        0x0 linker stubs
+
+.vfp11_veneer   0x00001178        0x0
+ .vfp11_veneer  0x00001178        0x0 linker stubs
+
+.v4_bx          0x00001178        0x0
+ .v4_bx         0x00001178        0x0 linker stubs
+
+.iplt           0x00001178        0x0
+ .iplt          0x00001178        0x0 LED.o
+
+.rel.dyn        0x00001178        0x0
+ .rel.iplt      0x00001178        0x0 LED.o
+
+.data           0x20000000        0x0 load address 0x00001178
+                0x20000000                _sdata = .
+ *(.data)
+ .data          0x20000000        0x0 GPIO.o
+ .data          0x20000000        0x0 LED.o
+ .data          0x20000000        0x0 Main.o
+ .data          0x20000000        0x0 OS.o
+ .data          0x20000000        0x0 Startup.o
+ .data          0x20000000        0x0 SysTick.o
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x00001178
+ .igot.plt      0x20000000        0x0 LED.o
+
+.bss            0x20000000       0xfc load address 0x00001178
+                0x20000000                _sbss = .
+ *(.bss)
+ .bss           0x20000000        0x0 GPIO.o
+ .bss           0x20000000        0x1 LED.o
+ .bss           0x20000001        0x0 Main.o
+ *fill*         0x20000001        0x7 
+ .bss           0x20000008       0xf1 OS.o
+ .bss           0x200000f9        0x0 Startup.o
+ .bss           0x200000f9        0x0 SysTick.o
+ *(COMMON)
+                0x200000fc                . = ALIGN (0x4)
+ *fill*         0x200000f9        0x3 
+                0x200000fc                _ebss = .
+OUTPUT(final.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x7e5
+ .debug_info    0x00000000      0x2db GPIO.o
+ .debug_info    0x000002db      0x136 LED.o
+ .debug_info    0x00000411       0x47 Main.o
+ .debug_info    0x00000458      0x1d4 OS.o
+ .debug_info    0x0000062c      0x12b Startup.o
+ .debug_info    0x00000757       0x8e SysTick.o
+
+.debug_abbrev   0x00000000      0x40a
+ .debug_abbrev  0x00000000      0x123 GPIO.o
+ .debug_abbrev  0x00000123       0x78 LED.o
+ .debug_abbrev  0x0000019b       0x3e Main.o
+ .debug_abbrev  0x000001d9       0xf9 OS.o
+ .debug_abbrev  0x000002d2       0xe4 Startup.o
+ .debug_abbrev  0x000003b6       0x54 SysTick.o
+
+.debug_aranges  0x00000000       0xc0
+ .debug_aranges
+                0x00000000       0x20 GPIO.o
+ .debug_aranges
+                0x00000020       0x20 LED.o
+ .debug_aranges
+                0x00000040       0x20 Main.o
+ .debug_aranges
+                0x00000060       0x20 OS.o
+ .debug_aranges
+                0x00000080       0x20 Startup.o
+ .debug_aranges
+                0x000000a0       0x20 SysTick.o
+
+.debug_macro    0x00000000     0xc098
+ .debug_macro   0x00000000       0x36 GPIO.o
+ .debug_macro   0x00000036      0xa54 GPIO.o
+ .debug_macro   0x00000a8a       0x10 GPIO.o
+ .debug_macro   0x00000a9a       0x22 GPIO.o
+ .debug_macro   0x00000abc     0xb496 GPIO.o
+ .debug_macro   0x0000bf52       0x4c LED.o
+ .debug_macro   0x0000bf9e       0x16 LED.o
+ .debug_macro   0x0000bfb4       0x1b Main.o
+ .debug_macro   0x0000bfcf       0x5d OS.o
+ .debug_macro   0x0000c02c       0x35 Startup.o
+ .debug_macro   0x0000c061       0x37 SysTick.o
+
+.debug_line     0x00000000      0x94c
+ .debug_line    0x00000000      0x544 GPIO.o
+ .debug_line    0x00000544       0xb8 LED.o
+ .debug_line    0x000005fc       0x64 Main.o
+ .debug_line    0x00000660      0x143 OS.o
+ .debug_line    0x000007a3       0xca Startup.o
+ .debug_line    0x0000086d       0xdf SysTick.o
+
+.debug_str      0x00000000    0x3e4ff
+ .debug_str     0x00000000    0x3e1f3 GPIO.o
+                              0x3e243 (size before relaxing)
+ .debug_str     0x0003e1f3       0xa4 LED.o
+                               0x2f17 (size before relaxing)
+ .debug_str     0x0003e297       0x1b Main.o
+                               0x2c41 (size before relaxing)
+ .debug_str     0x0003e2b2       0xf3 OS.o
+                               0x2e94 (size before relaxing)
+ .debug_str     0x0003e3a5      0x102 Startup.o
+                               0x2d5e (size before relaxing)
+ .debug_str     0x0003e4a7       0x58 SysTick.o
+                              0x3dfd1 (size before relaxing)
+
+.comment        0x00000000       0x4d
+ .comment       0x00000000       0x4d GPIO.o
+                                 0x4e (size before relaxing)
+ .comment       0x0000004d       0x4e LED.o
+ .comment       0x0000004d       0x4e Main.o
+ .comment       0x0000004d       0x4e OS.o
+ .comment       0x0000004d       0x4e Startup.o
+ .comment       0x0000004d       0x4e SysTick.o
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e GPIO.o
+ .ARM.attributes
+                0x0000002e       0x2e LED.o
+ .ARM.attributes
+                0x0000005c       0x2e Main.o
+ .ARM.attributes
+                0x0000008a       0x2e OS.o
+ .ARM.attributes
+                0x000000b8       0x2e Startup.o
+ .ARM.attributes
+                0x000000e6       0x2e SysTick.o
+
+.debug_frame    0x00000000      0x2dc
+ .debug_frame   0x00000000      0x100 GPIO.o
+ .debug_frame   0x00000100       0x48 LED.o
+ .debug_frame   0x00000148       0x2c Main.o
+ .debug_frame   0x00000174       0x80 OS.o
+ .debug_frame   0x000001f4       0x64 Startup.o
+ .debug_frame   0x00000258       0x84 SysTick.o

@@ -2,9 +2,11 @@
 #include "GPIO.h"
 #include "Port.h"
 #include "Type.h"
+#include "BITMATH.h"
 
 #define LED_STATE_ON       (0XAB)
 #define LED_STATE_OFF      (0XEC)
+
 
 static uint08_t LED_state;
 
@@ -14,10 +16,10 @@ void LED_Init(void)
     LED_state = LED_STATE_OFF;
 
     /* Set Led pin to output */
-    GPIO_SetPinDirection(LED_PIN_NUMBER,GPIO_DIRECTION_OUTPUT);
+    GPIO_SetPinDirection(LED_PORT,LED_PIN_NUMBER,GPIO_DIRECTION_OUTPUT);
 
     /* Set Led pin state to low */
-    GPIO_SetPinState(LED_PIN_NUMBER,GPIO_STATE_LOW);
+    GPIO_SetPinState(LED_PORT,LED_PIN_NUMBER,GPIO_STATE_LOW);
 }
 
 void LED_Update(void)
@@ -31,7 +33,7 @@ void LED_Update(void)
         LED_state = LED_STATE_ON;
 
         /* Set Led pin state to high */
-        GPIO_SetPinState(LED_PIN_NUMBER,GPIO_STATE_HIGH);
+        GPIO_SetPinState(LED_PORT,LED_PIN_NUMBER,GPIO_STATE_HIGH);
 
         break;
 
@@ -41,7 +43,7 @@ void LED_Update(void)
         LED_state = LED_STATE_OFF;
 
         /* Set Led pin state to high */
-        GPIO_SetPinState(LED_PIN_NUMBER,GPIO_STATE_LOW);
+        GPIO_SetPinState(LED_PORT,LED_PIN_NUMBER,GPIO_STATE_LOW);
 
         break;
 
