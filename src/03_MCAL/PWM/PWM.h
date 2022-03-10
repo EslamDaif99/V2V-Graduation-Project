@@ -1,6 +1,7 @@
 #ifndef _PWM_H_
 #define	_PWM_H_
 
+#include "Type.h"
 
 
 typedef enum
@@ -13,15 +14,15 @@ typedef enum
 
 typedef enum
 { 
-    PWM0,
+  PWM0,
 	PWM1,
 	PWM2,
-    PWM3,
+  PWM3,
 	PWM4,
 	PWM5,
 	PWM6,
-	PWM7,
-
+	PWM7
+	
 }PWM_Number;
 
 
@@ -59,9 +60,8 @@ typedef enum
     PWM_SYSCLK_DIV_8,
     PWM_SYSCLK_DIV_16,
     PWM_SYSCLK_DIV_32,
-    PWM_SYSCLK_DIV_64,
-    PWM_SYSCLK_DIV_64,
-    PWM_SYSCLK_DIV_64,
+    PWM_SYSCLK_DIV_64
+    
 }PWM_SYSCLK_DIV;
 
 
@@ -81,9 +81,9 @@ void PWMClockSet(PWM_Module module);
 void PWMDiv(PWM_SYSCLK_DIV div);                                                                                
 void PWMGenConfigure(PWM_Module module, PWM_Mode mode, PWM_Number number);                                      
 
-void PWMGenEnable(PWM_Module module, PWM_Generator generator);                                                   
-void PWMGenDisable(PWM_Module module, PWM_Generator generator);                                                  
-
+          
+void PWMGenEnable(PWM_Module module, PWM_Generator generator, PWM_Number number);
+void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number);
 
 void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV div, uint32_t Clock_Required);   
 void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32_t duty_cycle);                  

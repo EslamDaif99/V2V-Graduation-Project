@@ -113,13 +113,13 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
                     GPIO_PORTF_PCTL_R|=0x00005000;
                     break;
                 default:
-                        /*Do nothing*/
+                        /*Do nothing*/ break;
             }
 
             break;
         
         default:
-            /*Do nothing*/
+            /*Do nothing*/ break;
 
 
     }
@@ -166,10 +166,29 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
+													break;
                     }
                     break;
 
                 case PWM1: 
+
+                    switch(mode)
+                    {
+                        case Count_UP:
+                            SET_BIT(PWM0_0_CTL_R,1);
+                            break;
+                        
+                        case Count_DOWN:	
+                            CLR_BIT(PWM0_0_CTL_R,1);
+                            break;
+                        
+                        default:
+                            /*Do Nothing */
+														break;
+                    }
+                    break;
+
+                case PWM2: 
 
                     switch(mode)
                     {
@@ -183,10 +202,29 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
+													break;
                     }
                     break;
 
-                case PWM2: 
+                case PWM3: 
+
+                    switch(mode)
+                    {
+                        case Count_UP:
+                            SET_BIT(PWM0_1_CTL_R,1);
+                            break;
+                        
+                        case Count_DOWN:	
+                            CLR_BIT(PWM0_1_CTL_R,1);
+                            break;
+                        
+                        default:
+                            /*Do Nothing */
+													break;
+                    }
+                    break;
+
+                case PWM4: 
 
                     switch(mode)
                     {
@@ -200,10 +238,28 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
+													 break;
                     }
                     break;
 
-                case PWM3: 
+                case PWM5: 
+
+                    switch(mode)
+                    {
+                        case Count_UP:
+                            SET_BIT(PWM0_2_CTL_R,1);
+                            break;
+                        
+                        case Count_DOWN:	
+                            CLR_BIT(PWM0_2_CTL_R,1);
+                            break;
+                        
+                        default:
+                            /*Do Nothing */break;
+                    }
+                    break;
+
+                case PWM6: 
 
                     switch(mode)
                     {
@@ -217,57 +273,7 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
-                    }
-                    break;
-
-                case PWM4: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            SET_BIT(PWM0_4_CTL_R,1);
-                            break;
-                        
-                        case Count_DOWN:	
-                            CLR_BIT(PWM0_4_CTL_R,1);
-                            break;
-                        
-                        default:
-                            /*Do Nothing */
-                    }
-                    break;
-
-                case PWM5: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            SET_BIT(PWM0_5_CTL_R,1);
-                            break;
-                        
-                        case Count_DOWN:	
-                            CLR_BIT(PWM0_5_CTL_R,1);
-                            break;
-                        
-                        default:
-                            /*Do Nothing */
-                    }
-                    break;
-
-                case PWM6: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            SET_BIT(PWM0_6_CTL_R,1);
-                            break;
-                        
-                        case Count_DOWN:	
-                            CLR_BIT(PWM0_6_CTL_R,1);
-                            break;
-                        
-                        default:
-                            /*Do Nothing */
+													break;
                     }
                     break;
 
@@ -276,15 +282,16 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     switch(mode)
                     {
                         case Count_UP:
-                            SET_BIT(PWM0_7_CTL_R,1);
+                            SET_BIT(PWM0_3_CTL_R,1);
                             break;
                         
                         case Count_DOWN:	
-                            CLR_BIT(PWM0_7_CTL_R,1);
+                            CLR_BIT(PWM0_3_CTL_R,1);
                             break;
                         
                         default:
                             /*Do Nothing */
+													break;
                     }
                     break;
             }
@@ -308,6 +315,7 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
+													break;
                     }
                     break;
 
@@ -316,15 +324,15 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     switch(mode)
                     {
                         case Count_UP:
-                            SET_BIT(PWM1_1_CTL_R,1);
+                            SET_BIT(PWM1_0_CTL_R,1);
                             break;
                         
                         case Count_DOWN:	
-                            CLR_BIT(PWM1_1_CTL_R,1);
+                            CLR_BIT(PWM1_0_CTL_R,1);
                             break;
                         
                         default:
-                            /*Do Nothing */
+                            /*Do Nothing */break;
                     }
                     break;
 
@@ -342,10 +350,65 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
+													break;
                     }
                     break;
 
                 case PWM3: 
+
+                    switch(mode)
+                    {
+                        case Count_UP:
+                            SET_BIT(PWM1_1_CTL_R,1);
+                            break;
+                        
+                        case Count_DOWN:	
+                            CLR_BIT(PWM1_1_CTL_R,1);
+                            break;
+                        
+                        default:
+                            /*Do Nothing */
+													break;
+                    }
+                    break;
+
+                case PWM4: 
+
+                    switch(mode)
+                    {
+                        case Count_UP:
+                            SET_BIT(PWM1_2_CTL_R,1);
+                            break;
+                        
+                        case Count_DOWN:	
+                            CLR_BIT(PWM1_2_CTL_R,1);
+                            break;
+                        
+                        default:
+                            /*Do Nothing */
+													break;
+                    }
+                    break;
+
+                case PWM5: 
+
+                    switch(mode)
+                    {
+                        case Count_UP:
+                            SET_BIT(PWM1_2_CTL_R,1);
+                            break;
+                        
+                        case Count_DOWN:	
+                            CLR_BIT(PWM1_2_CTL_R,1);
+                            break;
+                        
+                        default:
+                            /*Do Nothing */
+													break;
+                    }
+                    break;
+
+                case PWM6: 
 
                     switch(mode)
                     {
@@ -359,57 +422,7 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                         
                         default:
                             /*Do Nothing */
-                    }
-                    break;
-
-                case PWM4: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            SET_BIT(PWM1_4_CTL_R,1);
-                            break;
-                        
-                        case Count_DOWN:	
-                            CLR_BIT(PWM1_4_CTL_R,1);
-                            break;
-                        
-                        default:
-                            /*Do Nothing */
-                    }
-                    break;
-
-                case PWM5: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            SET_BIT(PWM1_5_CTL_R,1);
-                            break;
-                        
-                        case Count_DOWN:	
-                            CLR_BIT(PWM1_5_CTL_R,1);
-                            break;
-                        
-                        default:
-                            /*Do Nothing */
-                    }
-                    break;
-
-                case PWM6: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            SET_BIT(PWM1_6_CTL_R,1);
-                            break;
-                        
-                        case Count_DOWN:	
-                            CLR_BIT(PWM1_6_CTL_R,1);
-                            break;
-                        
-                        default:
-                            /*Do Nothing */
+													break;
                     }
                     break;
 
@@ -418,25 +431,27 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     switch(mode)
                     {
                         case Count_UP:
-                            SET_BIT(PWM1_7_CTL_R,1);
+                            SET_BIT(PWM1_3_CTL_R,1);
                             break;
                         
                         case Count_DOWN:	
-                            CLR_BIT(PWM1_7_CTL_R,1);
+                            CLR_BIT(PWM1_3_CTL_R,1);
                             break;
                         
                         default:
-                            /*Do Nothing */
+                            /*Do Nothing */break;
                     }
                     break;
 
                 default:
+									break;
                     /*Do Nothing */
 
             }
             break;
      default:
             /*Do Nothing */
+		             break;
 
   }
 
@@ -481,7 +496,7 @@ void PWMGenEnable(PWM_Module module, PWM_Generator generator, PWM_Number number)
                     break;
 
                 default:
-                    /*Do Nothing */
+                    /*Do Nothing */ break;
             }
             break;
 
@@ -517,12 +532,12 @@ void PWMGenEnable(PWM_Module module, PWM_Generator generator, PWM_Number number)
                     break;
 
                 default:
-                    /*Do Nothing */
+                    /*Do Nothing */ break;
             }
             break;
 
         default:
-            /*Do Nothing */   
+            /*Do Nothing */  break; 
     }
 
   
@@ -557,7 +572,7 @@ void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number
                     break;
 
                 default:
-                    /*Do Nothing */
+                    /*Do Nothing */ break;
             }
             break;
 
@@ -566,6 +581,7 @@ void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number
             {
                 case Generator_0 :
                     CLR_BIT (PWM1_0_CTL_R,0);
+										
                     CLR_BIT(PWM1_ENABLE_R,number);
                     break;
 
@@ -582,15 +598,16 @@ void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number
                 case Generator_3 :
                     CLR_BIT (PWM1_3_CTL_R,0);
                     CLR_BIT(PWM1_ENABLE_R,number);
+										
                     break;
 
                 default:
-                    /*Do Nothing */
+                    /*Do Nothing */	break;
             }
             break;
 
         default:
-            /*Do Nothing */    
+            /*Do Nothing */    break;
     }
 
   
@@ -626,14 +643,6 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
                 System_Clock=16000000/64;
                 break;
 
-            case PWM_SYSCLK_DIV_64:
-                System_Clock=16000000/64;
-                break;
-
-            case PWM_SYSCLK_DIV_64:
-                System_Clock=16000000/64;
-                break;
-
             default:
                 System_Clock=16000000;
 
@@ -663,7 +672,7 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
                         break;
 
                     default:
-                        /*Do Nothing */
+                        /*Do Nothing */break;
                 }
 
                 break;
@@ -687,12 +696,13 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
                         break;
 
                     default:
-                        /*Do Nothing */
+                        /*Do Nothing */break;
+								
                 }
                 break;
 
             default:
-                /*Do Nothing */
+                /*Do Nothing */break;
         }
 
          
@@ -729,7 +739,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/	break;
                     }
                     break;
 
@@ -753,7 +763,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
 
                     }
                     break;
@@ -777,7 +787,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -798,7 +808,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -822,7 +832,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -843,7 +853,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -866,7 +876,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -888,11 +898,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
 
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
                 default:
-                /*Do nothing*/
+                /*Do nothing*/break;
             }
             break;
 
@@ -919,7 +929,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -940,7 +950,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
 
                     }
                     break;
@@ -964,7 +974,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -985,7 +995,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -1008,7 +1018,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -1029,7 +1039,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -1052,7 +1062,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
 
@@ -1073,17 +1083,17 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         default:
-                        /*Do nothing*/
+                        /*Do nothing*/break;
                     }
                     break;
                 default:
-                /*Do nothing*/
+                /*Do nothing*/break;
             }
             break;
       
         
      default:
-            /*Do Nothing */
+            /*Do Nothing */break;
 
   }
 
