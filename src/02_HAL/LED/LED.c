@@ -12,6 +12,8 @@ static uint08_t LED_state;
 
 void LED_Init(void)
 {
+    GPIO_Init(LED_PORT,LED_PIN_NUMBER);
+    
     /* Set led state variable to off */
     LED_state = LED_STATE_OFF;
 
