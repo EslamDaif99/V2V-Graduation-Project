@@ -9,11 +9,12 @@ INCLUDE_PATH_LIST :=  -I$(SOURCE_DIR)
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/01_Service
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/01_Service/OS
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/02_HAL
+INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/02_HAL/LED
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/02_HAL/Motor
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL/GPIO
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL/SysTick
-INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/02_HAL/LED
+INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/04_Drivers/PWM
 
 COMPILER := arm-none-eabi-gcc
 COMPILER_FLAGS := -c  -g3 -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -std=c99  -Wall -O0
@@ -27,7 +28,7 @@ clean:
 	@echo "Cleaning ..."
 	@rm -f  $(wildcard *.o) $(wildcard *.elf) $(wildcard *.hex) $(wildcard *.txt) $(wildcard *.map)
 
-build: Startup.o Main.o GPIO.o LED.o SysTick.o OS.o Motor.o
+build: Startup.o Main.o GPIO.o LED.o SysTick.o OS.o Motor.o PWM.o
 	
 
 Link: 
@@ -60,6 +61,10 @@ Motor.o : $(SOURCE_DIR)/02_HAL/Motor/Motor.c
 	@$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH_LIST) $^ -o $(BUILD_DIR)/$@
 	
 OS.o : $(SOURCE_DIR)/01_Service/OS/OS.c
+	@echo "Building $^ ..." 
+	@$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH_LIST) $^ -o $(BUILD_DIR)/$@
+
+PWM.o : $(SOURCE_DIR)/04_Drivers/PWM/PWM.c
 	@echo "Building $^ ..." 
 	@$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH_LIST) $^ -o $(BUILD_DIR)/$@
 	

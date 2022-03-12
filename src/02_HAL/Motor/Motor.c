@@ -8,7 +8,7 @@
 void Motor_Init(void)
 {
 	/***********Motor_1**************/
-	
+#if 0
 	 PWMPinConfigure(M1PWM,PWM6); 
 	
 	 PWMClockSet(M1PWM,PWM6);        
@@ -18,7 +18,7 @@ void Motor_Init(void)
 	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50);   
 	 PWMDutyCycleSet(M1PWM,PWM3,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,Generator_3, PWM6);
-	
+#endif
 	 GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_DIRECTION_OUTPUT);
 	 GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_DIRECTION_OUTPUT);
 	
@@ -52,7 +52,6 @@ void Motor_Init(void)
 //	//GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_ENABLE,GPIO_STATE_LOW);
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_LOW);
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
-
 
 }
 

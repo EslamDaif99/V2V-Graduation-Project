@@ -58,7 +58,6 @@ void OS_Init(void)
 	/* ************* SWC Initialization ************* */
 
 
-	GPIO_Init(LED_PORT,LED_PIN_NUMBER);
 	LED_Init();
 	Motor_Init();
 
