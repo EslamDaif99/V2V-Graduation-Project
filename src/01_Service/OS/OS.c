@@ -1,13 +1,10 @@
-#include <stdio.h>
-#include <stdint.h>
-
 #include "OS.h"
 #include "GPIO.h"
 #include "LED.h"
 #include "Type.h"
 #include "Timer.h"
-#include "BITMATH.h"
 #include "Port.h"
+#include "Motor.h"
 
 static uint08_t OS_Tick;
 
@@ -15,12 +12,27 @@ void OS_Init(void)
 {
 	OS_Tick = 0;
 
-	GPIO_Init(PORT,LED_PIN_NUMBER);
 	
-	LED_Init();
+//	GPIO_Init(MOTOR_1_PORT,MOTOR_1_ENABLE);
+//	GPIO_Init(MOTOR_2_PORT,MOTOR_2_ENABLE);
+//	GPIO_Init(MOTOR_3_PORT,MOTOR_3_ENABLE);
+//	GPIO_Init(MOTOR_4_PORT,MOTOR_4_ENABLE);
+	
+	GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
+	GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
 
-	/* OS Tick */
-	Timer_Init();
+//	GPIO_Init(MOTOR_2_PORT,MOTOR_2_IN1);
+//	GPIO_Init(MOTOR_2_PORT,MOTOR_2_IN2);
+
+//	GPIO_Init(MOTOR_3_PORT,MOTOR_3_IN1);
+//	GPIO_Init(MOTOR_3_PORT,MOTOR_3_IN2);
+
+//	GPIO_Init(MOTOR_4_PORT,MOTOR_4_IN1);
+//	GPIO_Init(MOTOR_4_PORT,MOTOR_4_IN2);	
+	
+	
+	Motor_Init();
+	Motor_Start();
 }
 
 void OS_IncreamentTick(void)
@@ -28,16 +40,9 @@ void OS_IncreamentTick(void)
 	OS_Tick++;
 }
 
+
 void OS_Update(void)
 {
-	if(OS_Tick != 0)
-	{
-		LED_Update();
-		OS_Tick--;
-	}
-	else
-	{
-		/* Do Nothing */
-	}	
-	
+	Motor_GoForward();
+
 }
