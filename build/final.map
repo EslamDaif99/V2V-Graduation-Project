@@ -48,7 +48,7 @@ LOAD OS.o
 LOAD Startup.o
 LOAD SysTick.o
 
-.text           0x00000000     0x11c8
+.text           0x00000000     0x11fc
                 0x00000000                _stext = .
  *(.isr_vector)
  .isr_vector    0x00000000      0x26c Startup.o
@@ -74,127 +74,127 @@ LOAD SysTick.o
                 0x00000f4a                Motor_GoForward
                 0x00000f56                Motor_SetSpeed
  *fill*         0x00000f6a        0x2 
- .text          0x00000f6c      0x16c OS.o
+ .text          0x00000f6c      0x1a0 OS.o
                 0x00000f6c                OS_Init
-                0x00001024                OS_Update
-                0x000010bc                OS_IncreamentTick
- .text          0x000010d8       0x98 Startup.o
-                0x000010d8                _start
-                0x0000115c                DebugMon_Handler
-                0x0000115c                I2C0_IRQHandler
-                0x0000115c                PWM0_Generator0_IRQHandler
-                0x0000115c                HardFault_Handler
-                0x0000115c                TMR0B_16n32_IRQHandler
-                0x0000115c                TMR1B_16n32_IRQHandler
-                0x0000115c                PendSV_Handler
-                0x0000115c                NMI_Handler
-                0x0000115c                I2C1_IRQHandler
-                0x0000115c                SysException_IRQHandler
-                0x0000115c                UART1_IRQHandler
-                0x0000115c                CAN1_IRQHandler
-                0x0000115c                TMR5A_16n32_IRQHandler
-                0x0000115c                TMR0A_32n64_IRQHandler
-                0x0000115c                GPIO_D_IRQHandler
-                0x0000115c                uDMA_Error_IRQHandler
-                0x0000115c                TMR2B_32n64_IRQHandler
-                0x0000115c                UART0_IRQHandler
-                0x0000115c                SSI0_IRQHandler
-                0x0000115c                AnalogComparator1_IRQHandler
-                0x0000115c                TMR4A_32n64_IRQHandler
-                0x0000115c                UsageFault_Handler
-                0x0000115c                PWM0_Generator2_IRQHandler
-                0x0000115c                GPIO_A_IRQHandler
-                0x0000115c                Hibernation_IRQHandler
-                0x0000115c                TMR2A_32n64_IRQHandler
-                0x0000115c                TMR3A_32n64_IRQHandler
-                0x0000115c                TMR1B_32n64_IRQHandler
-                0x0000115c                ADC0_Sequence2_IRQHandler
-                0x0000115c                SSI1_IRQHandler
-                0x0000115c                I2C2_IRQHandler
-                0x0000115c                ADC1_Sequence3_IRQHandler
-                0x0000115c                SysControl_IRQHandler
-                0x0000115c                TMR3B_16n32_IRQHandler
-                0x0000115c                ADC0_Sequence3_IRQHandler
-                0x0000115c                PWM1_Generator2_IRQHandler
-                0x0000115c                UART5_IRQHandler
-                0x0000115c                TMR3B_32n64_IRQHandler
-                0x0000115c                TMR5B_16n32_IRQHandler
-                0x0000115c                GPIO_E_IRQHandler
-                0x0000115c                WWDG0n1_IRQHandler
-                0x0000115c                GPIO_C_IRQHandler
-                0x0000115c                TMR4A_16n32_IRQHandler
-                0x0000115c                UART2_IRQHandler
-                0x0000115c                AnalogComparator0_IRQHandler
-                0x0000115c                UART4_IRQHandler
-                0x0000115c                Default_Handler
-                0x0000115c                TMR4B_16n32_IRQHandler
-                0x0000115c                TMR3A_16n32_IRQHandler
-                0x0000115c                QEI1_IRQHandler
-                0x0000115c                ADC1_Sequence2_IRQHandler
-                0x0000115c                QEI0_IRQHandler
-                0x0000115c                USB_IRQHandler
-                0x0000115c                PWM_Generator3_IRQHandler
-                0x0000115c                I2C3_IRQHandler
-                0x0000115c                FlashEEPROMControl_IRQHandler
-                0x0000115c                uDMA_SW_IRQHandler
-                0x0000115c                GPIO_F_IRQHandler
-                0x0000115c                MemManage_Handler
-                0x0000115c                TMR2B_16n32_IRQHandler
-                0x0000115c                TMR5A_32n64_IRQHandler
-                0x0000115c                ADC1_Sequence1_IRQHandler
-                0x0000115c                SVC_Handler
-                0x0000115c                PWM0_Generator1_IRQHandler
-                0x0000115c                TMR2A_16n32_IRQHandler
-                0x0000115c                PWM1_Fault_IRQHandler
-                0x0000115c                TMR5B_32n64_IRQHandler
-                0x0000115c                PWM0_Fault_IRQHandler
-                0x0000115c                CAN0_IRQHandler
-                0x0000115c                TMR0B_32n64_IRQHandler
-                0x0000115c                TMR4B_32n64_IRQHandler
-                0x0000115c                TMR0A_16n32_IRQHandler
-                0x0000115c                SSI2_IRQHandler
-                0x0000115c                PWM1_Generator3_IRQHandler
-                0x0000115c                UART7_IRQHandler
-                0x0000115c                ADC0_Sequence1_IRQHandler
-                0x0000115c                UART6_IRQHandler
-                0x0000115c                ADC1_Sequence0_IRQHandler
-                0x0000115c                PWM1_Generator1_IRQHandler
-                0x0000115c                BusFault_Handler
-                0x0000115c                SSI3_IRQHandler
-                0x0000115c                UART3_IRQHandler
-                0x0000115c                GPIO_B_IRQHandler
-                0x0000115c                PWM1_Generator0_IRQHandler
-                0x0000115c                ADC0_Sequence0_IRQHandler
-                0x0000115c                TMR1A_16n32_IRQHandler
-                0x0000115c                TMR1A_32n64_IRQHandler
-                0x00001162                Reset_Handler
- .text          0x00001170       0x58 SysTick.o
-                0x0000117e                SysTick_Init
-                0x000011b0                SysTick_Handler
-                0x000011bc                SysTick_Update
+                0x00001058                OS_Update
+                0x000010f0                OS_IncreamentTick
+ .text          0x0000110c       0x98 Startup.o
+                0x0000110c                _start
+                0x00001190                DebugMon_Handler
+                0x00001190                I2C0_IRQHandler
+                0x00001190                PWM0_Generator0_IRQHandler
+                0x00001190                HardFault_Handler
+                0x00001190                TMR0B_16n32_IRQHandler
+                0x00001190                TMR1B_16n32_IRQHandler
+                0x00001190                PendSV_Handler
+                0x00001190                NMI_Handler
+                0x00001190                I2C1_IRQHandler
+                0x00001190                SysException_IRQHandler
+                0x00001190                UART1_IRQHandler
+                0x00001190                CAN1_IRQHandler
+                0x00001190                TMR5A_16n32_IRQHandler
+                0x00001190                TMR0A_32n64_IRQHandler
+                0x00001190                GPIO_D_IRQHandler
+                0x00001190                uDMA_Error_IRQHandler
+                0x00001190                TMR2B_32n64_IRQHandler
+                0x00001190                UART0_IRQHandler
+                0x00001190                SSI0_IRQHandler
+                0x00001190                AnalogComparator1_IRQHandler
+                0x00001190                TMR4A_32n64_IRQHandler
+                0x00001190                UsageFault_Handler
+                0x00001190                PWM0_Generator2_IRQHandler
+                0x00001190                GPIO_A_IRQHandler
+                0x00001190                Hibernation_IRQHandler
+                0x00001190                TMR2A_32n64_IRQHandler
+                0x00001190                TMR3A_32n64_IRQHandler
+                0x00001190                TMR1B_32n64_IRQHandler
+                0x00001190                ADC0_Sequence2_IRQHandler
+                0x00001190                SSI1_IRQHandler
+                0x00001190                I2C2_IRQHandler
+                0x00001190                ADC1_Sequence3_IRQHandler
+                0x00001190                SysControl_IRQHandler
+                0x00001190                TMR3B_16n32_IRQHandler
+                0x00001190                ADC0_Sequence3_IRQHandler
+                0x00001190                PWM1_Generator2_IRQHandler
+                0x00001190                UART5_IRQHandler
+                0x00001190                TMR3B_32n64_IRQHandler
+                0x00001190                TMR5B_16n32_IRQHandler
+                0x00001190                GPIO_E_IRQHandler
+                0x00001190                WWDG0n1_IRQHandler
+                0x00001190                GPIO_C_IRQHandler
+                0x00001190                TMR4A_16n32_IRQHandler
+                0x00001190                UART2_IRQHandler
+                0x00001190                AnalogComparator0_IRQHandler
+                0x00001190                UART4_IRQHandler
+                0x00001190                Default_Handler
+                0x00001190                TMR4B_16n32_IRQHandler
+                0x00001190                TMR3A_16n32_IRQHandler
+                0x00001190                QEI1_IRQHandler
+                0x00001190                ADC1_Sequence2_IRQHandler
+                0x00001190                QEI0_IRQHandler
+                0x00001190                USB_IRQHandler
+                0x00001190                PWM_Generator3_IRQHandler
+                0x00001190                I2C3_IRQHandler
+                0x00001190                FlashEEPROMControl_IRQHandler
+                0x00001190                uDMA_SW_IRQHandler
+                0x00001190                GPIO_F_IRQHandler
+                0x00001190                MemManage_Handler
+                0x00001190                TMR2B_16n32_IRQHandler
+                0x00001190                TMR5A_32n64_IRQHandler
+                0x00001190                ADC1_Sequence1_IRQHandler
+                0x00001190                SVC_Handler
+                0x00001190                PWM0_Generator1_IRQHandler
+                0x00001190                TMR2A_16n32_IRQHandler
+                0x00001190                PWM1_Fault_IRQHandler
+                0x00001190                TMR5B_32n64_IRQHandler
+                0x00001190                PWM0_Fault_IRQHandler
+                0x00001190                CAN0_IRQHandler
+                0x00001190                TMR0B_32n64_IRQHandler
+                0x00001190                TMR4B_32n64_IRQHandler
+                0x00001190                TMR0A_16n32_IRQHandler
+                0x00001190                SSI2_IRQHandler
+                0x00001190                PWM1_Generator3_IRQHandler
+                0x00001190                UART7_IRQHandler
+                0x00001190                ADC0_Sequence1_IRQHandler
+                0x00001190                UART6_IRQHandler
+                0x00001190                ADC1_Sequence0_IRQHandler
+                0x00001190                PWM1_Generator1_IRQHandler
+                0x00001190                BusFault_Handler
+                0x00001190                SSI3_IRQHandler
+                0x00001190                UART3_IRQHandler
+                0x00001190                GPIO_B_IRQHandler
+                0x00001190                PWM1_Generator0_IRQHandler
+                0x00001190                ADC0_Sequence0_IRQHandler
+                0x00001190                TMR1A_16n32_IRQHandler
+                0x00001190                TMR1A_32n64_IRQHandler
+                0x00001196                Reset_Handler
+ .text          0x000011a4       0x58 SysTick.o
+                0x000011b2                SysTick_Init
+                0x000011e4                SysTick_Handler
+                0x000011f0                SysTick_Update
  *(.rodata)
-                0x000011c8                . = ALIGN (0x4)
-                0x000011c8                _etext = .
+                0x000011fc                . = ALIGN (0x4)
+                0x000011fc                _etext = .
 
-.glue_7         0x000011c8        0x0
- .glue_7        0x000011c8        0x0 linker stubs
+.glue_7         0x000011fc        0x0
+ .glue_7        0x000011fc        0x0 linker stubs
 
-.glue_7t        0x000011c8        0x0
- .glue_7t       0x000011c8        0x0 linker stubs
+.glue_7t        0x000011fc        0x0
+ .glue_7t       0x000011fc        0x0 linker stubs
 
-.vfp11_veneer   0x000011c8        0x0
- .vfp11_veneer  0x000011c8        0x0 linker stubs
+.vfp11_veneer   0x000011fc        0x0
+ .vfp11_veneer  0x000011fc        0x0 linker stubs
 
-.v4_bx          0x000011c8        0x0
- .v4_bx         0x000011c8        0x0 linker stubs
+.v4_bx          0x000011fc        0x0
+ .v4_bx         0x000011fc        0x0 linker stubs
 
-.iplt           0x000011c8        0x0
- .iplt          0x000011c8        0x0 LED.o
+.iplt           0x000011fc        0x0
+ .iplt          0x000011fc        0x0 LED.o
 
-.rel.dyn        0x000011c8        0x0
- .rel.iplt      0x000011c8        0x0 LED.o
+.rel.dyn        0x000011fc        0x0
+ .rel.iplt      0x000011fc        0x0 LED.o
 
-.data           0x20000000        0x0 load address 0x000011c8
+.data           0x20000000        0x0 load address 0x000011fc
                 0x20000000                _sdata = .
  *(.data)
  .data          0x20000000        0x0 GPIO.o
@@ -207,10 +207,10 @@ LOAD SysTick.o
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _edata = .
 
-.igot.plt       0x20000000        0x0 load address 0x000011c8
+.igot.plt       0x20000000        0x0 load address 0x000011fc
  .igot.plt      0x20000000        0x0 LED.o
 
-.bss            0x20000000       0xfc load address 0x000011c8
+.bss            0x20000000       0xfc load address 0x000011fc
                 0x20000000                _sbss = .
  *(.bss)
  .bss           0x20000000        0x0 GPIO.o
@@ -262,7 +262,7 @@ LOAD linker stubs
  .debug_aranges
                 0x000000c0       0x20 SysTick.o
 
-.debug_macro    0x00000000     0xc0b3
+.debug_macro    0x00000000     0xc0c3
  .debug_macro   0x00000000       0x36 GPIO.o
  .debug_macro   0x00000036      0xa54 GPIO.o
  .debug_macro   0x00000a8a       0x10 GPIO.o
@@ -272,20 +272,20 @@ LOAD linker stubs
  .debug_macro   0x0000bf9e       0x16 LED.o
  .debug_macro   0x0000bfb4       0x1b Main.o
  .debug_macro   0x0000bfcf       0x1b Motor.o
- .debug_macro   0x0000bfea       0x5d OS.o
- .debug_macro   0x0000c047       0x35 Startup.o
- .debug_macro   0x0000c07c       0x37 SysTick.o
+ .debug_macro   0x0000bfea       0x6d OS.o
+ .debug_macro   0x0000c057       0x35 Startup.o
+ .debug_macro   0x0000c08c       0x37 SysTick.o
 
-.debug_line     0x00000000      0x9ad
+.debug_line     0x00000000      0x9d6
  .debug_line    0x00000000      0x544 GPIO.o
  .debug_line    0x00000544       0xb8 LED.o
  .debug_line    0x000005fc       0x64 Main.o
  .debug_line    0x00000660       0x61 Motor.o
- .debug_line    0x000006c1      0x143 OS.o
- .debug_line    0x00000804       0xca Startup.o
- .debug_line    0x000008ce       0xdf SysTick.o
+ .debug_line    0x000006c1      0x16c OS.o
+ .debug_line    0x0000082d       0xca Startup.o
+ .debug_line    0x000008f7       0xdf SysTick.o
 
-.debug_str      0x00000000    0x3e5b9
+.debug_str      0x00000000    0x3e5dc
  .debug_str     0x00000000    0x3e1f3 GPIO.o
                               0x3e243 (size before relaxing)
  .debug_str     0x0003e1f3       0xa4 LED.o
@@ -294,11 +294,11 @@ LOAD linker stubs
                                0x2c41 (size before relaxing)
  .debug_str     0x0003e2b2       0xba Motor.o
                                0x2cee (size before relaxing)
- .debug_str     0x0003e36c       0xf3 OS.o
-                               0x2e94 (size before relaxing)
- .debug_str     0x0003e45f      0x102 Startup.o
+ .debug_str     0x0003e36c      0x116 OS.o
+                               0x2ec2 (size before relaxing)
+ .debug_str     0x0003e482      0x102 Startup.o
                                0x2d5e (size before relaxing)
- .debug_str     0x0003e561       0x58 SysTick.o
+ .debug_str     0x0003e584       0x58 SysTick.o
                               0x3dfd1 (size before relaxing)
 
 .comment        0x00000000       0x4d

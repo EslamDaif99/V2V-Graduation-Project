@@ -2,6 +2,7 @@
 #include "SysTick.h"
 #include "GPIO.h"
 #include "LED.h"
+#include "Motor.h"
 #include "Port.h"
 #include "OS.h"
 
@@ -9,7 +10,7 @@
 #define OS_TICK_MS							(0x01)
 
 #define LED_UPDATE_PERIODICITY_MS			(0x3E8) /* 1000 MS */
-
+#define MOTOR_UPDATE_PERIODICITY_MS			(0x01) /* 1 MS */
 
 typedef struct
 {
@@ -49,11 +50,17 @@ void OS_Init(void)
 	OS_TaskList[index].process = LED_Update;
 	index++;
 
+	/* ************* OS Task 0x01 ************* */
+	OS_TaskList[index].periodicity_ms = MOTOR_UPDATE_PERIODICITY_MS;
+	OS_TaskList[index].process = Motor_Update;
+	index++;
+
 	/* ************* SWC Initialization ************* */
 
 
 	GPIO_Init(LED_PORT,LED_PIN_NUMBER);
 	LED_Init();
+	Motor_Init();
 
 	SysTick_Init();
 }
