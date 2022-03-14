@@ -3,6 +3,7 @@
 #include "GPIO.h"
 #include "LED.h"
 #include "Motor.h"
+#include "UART.h"
 #include "Port.h"
 #include "OS.h"
 
@@ -11,6 +12,8 @@
 
 #define LED_UPDATE_PERIODICITY_MS			(0x3E8) /* 1000 MS */
 #define MOTOR_UPDATE_PERIODICITY_MS			(0x01) /* 1 MS */
+#define UART_UPDATE_PERIODICITY_MS			(0x3E8) /* 1 MS */
+
 
 typedef struct
 {
@@ -55,11 +58,17 @@ void OS_Init(void)
 	OS_TaskList[index].process = Motor_Update;
 	index++;
 
+	/* ************* OS Task 0x01 ************* */
+	OS_TaskList[index].periodicity_ms = UART_UPDATE_PERIODICITY_MS;
+	OS_TaskList[index].process = UART_Update;
+	index++;
+
 	/* ************* SWC Initialization ************* */
 
 
 	LED_Init();
 	Motor_Init();
+	UART_Init();
 
 	SysTick_Init();
 }

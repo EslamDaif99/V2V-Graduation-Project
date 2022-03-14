@@ -14,6 +14,7 @@ INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/02_HAL/Motor
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL/GPIO
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL/SysTick
+INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/03_MCAL/UART
 INCLUDE_PATH_LIST +=  -I$(SOURCE_DIR)/04_Drivers/PWM
 
 COMPILER := arm-none-eabi-gcc
@@ -28,7 +29,7 @@ clean:
 	@echo "Cleaning ..."
 	@rm -f  $(wildcard *.o) $(wildcard *.elf) $(wildcard *.hex) $(wildcard *.txt) $(wildcard *.map)
 
-build: Startup.o Main.o GPIO.o LED.o SysTick.o OS.o Motor.o PWM.o
+build: Startup.o Main.o GPIO.o LED.o SysTick.o OS.o Motor.o PWM.o UART.o
 	
 
 Link: 
@@ -64,9 +65,15 @@ OS.o : $(SOURCE_DIR)/01_Service/OS/OS.c
 	@echo "Building $^ ..." 
 	@$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH_LIST) $^ -o $(BUILD_DIR)/$@
 
+UART.o : $(SOURCE_DIR)/03_MCAL/UART/UART.c
+	@echo "Building $^ ..." 
+	@$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH_LIST) $^ -o $(BUILD_DIR)/$@
+	
 PWM.o : $(SOURCE_DIR)/04_Drivers/PWM/PWM.c
 	@echo "Building $^ ..." 
 	@$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH_LIST) $^ -o $(BUILD_DIR)/$@
+	
+
 	
 dump :
 	@echo "Dumping..."
