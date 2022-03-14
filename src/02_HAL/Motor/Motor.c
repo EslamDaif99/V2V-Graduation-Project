@@ -7,28 +7,32 @@
 
 void Motor_Init(void)
 {
-#if 1
 	/***********Motor_1**************/
 
+	 PWMClockSet(M1PWM,PWM6);	
+	 PWMDiv(PWM_SYSCLK_DIV_64);
 	 PWMPinConfigure(M1PWM,PWM6); 
 	
-	 PWMClockSet(M1PWM,PWM6);        
-	 PWMGenDisable(M1PWM,Generator_3, PWM6);	
-	 PWMDiv(PWM_SYSCLK_DIV_64);                                                                                
+    	
+	 
+#if 1
+	
+	 PWMGenDisable(M1PWM,Generator_3,PWM6);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                             
 	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50);   
 	 PWMDutyCycleSet(M1PWM,PWM3,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,Generator_3, PWM6);
-
 	
-	GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
-	GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
-	GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_DIRECTION_OUTPUT);
-	GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_DIRECTION_OUTPUT);
+#endif
+	
+	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
+	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
+	 GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_DIRECTION_OUTPUT);
+	 GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_DIRECTION_OUTPUT);
 	
 
-	GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_STATE_LOW);
-	GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_STATE_LOW);
+	 GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_STATE_LOW);
+	 GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_STATE_LOW);
 	
 	/************Motor_2********/
 	//GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_ENABLE,GPIO_DIRECTION_OUTPUT);
@@ -56,11 +60,8 @@ void Motor_Init(void)
 //	//GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_ENABLE,GPIO_STATE_LOW);
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_LOW);
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
-
-	Motor_Start();
-	Motor_GoForward();
-	
-#endif
+//	Motor_Start();
+  Motor_GoForward();
 }
 
 void Motor_Update(void)
