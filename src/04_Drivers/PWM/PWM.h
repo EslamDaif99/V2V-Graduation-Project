@@ -76,10 +76,12 @@ typedef enum{
 
 
 
-void PWMPinConfigure(PWM_Module module,PWM_Number number);                                                      
 void PWMClockSet(PWM_Module module,PWM_Number number);                                                                            
-void PWMDiv(PWM_SYSCLK_DIV div);     
+void PWMDiv(PWM_SYSCLK_DIV div);
+void PWMPinConfigure(PWM_Module module,PWM_Number number);  
+
 void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number);
+
 void PWMGenConfigure(PWM_Module module, PWM_Mode mode, PWM_Number number);                                      
 
          

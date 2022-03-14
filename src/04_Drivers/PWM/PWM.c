@@ -6,10 +6,95 @@
 
 
 uint32_t Load =0;
+void PWMClockSet (PWM_Module module,PWM_Number number)
+{
+    SET_BIT(SYSCTL_RCGCPWM_R,module);      /*Enable and provide a clock to PWM module  in Run mode*/
+		switch(module)
+		{
+			case M0PWM:
+					switch(number)
+					{
+						case PWM0:
+							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
+							break;
+						case PWM1:
+							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
+							break;
+						case PWM2:
+							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
+							break;
+						case PWM3:
+							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
+							break;
+						case PWM4:
+							SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
+							break;
+						case PWM5:
+							SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
+							break;
+						case PWM6:
+							SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */
+						  SET_BIT(SYSCTL_RCGCGPIO_R,2);					 /* enable clock to PORTC */
+							break;
+						case PWM7:
+							SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */
+						  SET_BIT(SYSCTL_RCGCGPIO_R,2);					 /* enable clock to PORTC */
+							break;							
+					  default: break;
+					
+					}
+				break;
+					
+			case M1PWM:
+					switch(number)
+					{
+					  case PWM0:
+						  SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */	
+							break;
+						case PWM1:
+							SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */
+							break;
+						case PWM2:
+							SET_BIT(SYSCTL_RCGCGPIO_R,0);					 /* enable clock to PORTA */
+							SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
+							break;
+						case PWM3:
+							SET_BIT(SYSCTL_RCGCGPIO_R,0);					 /* enable clock to PORTA */
+						  SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
+							break;
+						case PWM4:
+							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
+							break;
+						case PWM5:
+							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
+							break;
+						case PWM6:
+							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
+							break;
+						case PWM7:
+							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
+							break;							
+					  default: break;
+					
+					}
+				break;
+					
+			default: break;
+		}
+}
+
+
+void PWMDiv(PWM_SYSCLK_DIV div)
+{
+    SET_BIT(SYSCTL_RCC_R,20);              /* Enable System Clock Divisor function  */
+    SYSCTL_RCC_R|=(div<<17);
+    
+}
+
 
 void PWMPinConfigure(PWM_Module module,PWM_Number number)
 {
-
+	
     switch(module)
     {
         case M0PWM:
@@ -184,10 +269,11 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
 
                 case PWM6:
 										GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
-                    GPIO_PORTF_AFSEL_R|=0x04;
-                    GPIO_PORTF_PCTL_R|=0x00000500;
-								    GPIO_PORTF_CR_R  |=0x04;							 /*TO MAKE SURE THAT I WILL USE  PIN2*/
+										GPIO_PORTF_CR_R  |=0x04;							 /*TO MAKE SURE THAT I WILL USE  PIN2*/
 										GPIO_PORTF_DIR_R |=0x04;    			    /*WE SET PIN2 output*/
+                    GPIO_PORTF_AFSEL_R|=0x04;
+									  GPIO_PORTF_PCTL_R &= ~(0x00000F00);
+                    GPIO_PORTF_PCTL_R|=0x00000500;
 								    GPIO_PORTF_DEN_R |=0x04;            /* set PF2 as a digital pin */
                     break;
 
@@ -215,90 +301,6 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
 }
 
 
-void PWMClockSet (PWM_Module module,PWM_Number number)
-{
-    SET_BIT(SYSCTL_RCGCPWM_R,module);      /*Enable and provide a clock to PWM module  in Run mode*/
-		switch(module)
-		{
-			case M0PWM:
-					switch(number)
-					{
-						case PWM0:
-							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
-							break;
-						case PWM1:
-							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
-							break;
-						case PWM2:
-							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
-							break;
-						case PWM3:
-							SET_BIT(SYSCTL_RCGCGPIO_R,1);					 /* enable clock to PORTB */
-							break;
-						case PWM4:
-							SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
-							break;
-						case PWM5:
-							SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
-							break;
-						case PWM6:
-							SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */
-						  SET_BIT(SYSCTL_RCGCGPIO_R,2);					 /* enable clock to PORTC */
-							break;
-						case PWM7:
-							SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */
-						  SET_BIT(SYSCTL_RCGCGPIO_R,2);					 /* enable clock to PORTC */
-							break;							
-					  default: break;
-					
-					}
-				break;
-					
-			case M1PWM:
-					switch(number)
-					{
-					  case PWM0:
-						  SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */	
-							break;
-						case PWM1:
-							SET_BIT(SYSCTL_RCGCGPIO_R,3);					 /* enable clock to PORTD */
-							break;
-						case PWM2:
-							SET_BIT(SYSCTL_RCGCGPIO_R,0);					 /* enable clock to PORTA */
-							SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
-							break;
-						case PWM3:
-							SET_BIT(SYSCTL_RCGCGPIO_R,0);					 /* enable clock to PORTA */
-						  SET_BIT(SYSCTL_RCGCGPIO_R,4);					 /* enable clock to PORTE */
-							break;
-						case PWM4:
-							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
-							break;
-						case PWM5:
-							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
-							break;
-						case PWM6:
-							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
-							break;
-						case PWM7:
-							SET_BIT(SYSCTL_RCGCGPIO_R,5);					 /* enable clock to PORTF */
-							break;							
-					  default: break;
-					
-					}
-				break;
-					
-			default: break;
-		}
-}
-
-
-void PWMDiv(PWM_SYSCLK_DIV div)
-{
-    SET_BIT(SYSCTL_RCC_R,20);              /* Enable System Clock Divisor function  */
-    SYSCTL_RCC_R|=(div<<17);
-    
-}
 
 
 void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number)
@@ -309,6 +311,7 @@ void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number
             switch(generator)
             {
                 case Generator_0 :
+									
                     CLR_BIT (PWM0_0_CTL_R,0);
                     CLR_BIT(PWM0_ENABLE_R,number);
                     break;
@@ -353,7 +356,8 @@ void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number
                     break;
 
                 case Generator_3 :
-                    CLR_BIT (PWM1_3_CTL_R,0);
+                    //CLR_BIT (PWM1_3_CTL_R,0);	
+										PWM1_3_CTL_R &= ~(1<<0);	   /* Disable Generator 3 counter */								
                     CLR_BIT(PWM1_ENABLE_R,number);
 										
                     break;
