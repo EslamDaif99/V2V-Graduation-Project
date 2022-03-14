@@ -13,10 +13,11 @@ void Motor_Init(void)
 	 PWMDiv(PWM_SYSCLK_DIV_64);
 	 PWMPinConfigure(M1PWM,PWM6); 
 	
-       
-	 PWMGenDisable(M1PWM,Generator_3,PWM6);	
-#if 0	
-	                                                                                 
+    	
+	 
+#if 1
+	
+	 PWMGenDisable(M1PWM,Generator_3,PWM6);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                             
 	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50);   
 	 PWMDutyCycleSet(M1PWM,PWM3,Count_DOWN,75);
