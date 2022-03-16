@@ -80,10 +80,10 @@ void PWMClockSet(PWM_Module module,PWM_Number number);
 void PWMDiv(PWM_SYSCLK_DIV div);
 void PWMPinConfigure(PWM_Module module,PWM_Number number);  
 
-void PWMGenDisable(PWM_Module module, PWM_Generator generator, PWM_Number number);
+void PWMGenDisable(PWM_Module module, PWM_Generator generator);
 
 void PWMGenConfigure(PWM_Module module, PWM_Mode mode, PWM_Number number);                                      
-
+void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode);
          
 void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV div, uint32_t Clock_Required);   
 void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32_t duty_cycle);                  
