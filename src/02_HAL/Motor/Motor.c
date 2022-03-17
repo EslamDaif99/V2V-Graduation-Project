@@ -11,19 +11,17 @@ void Motor_Init(void)
 
 	 PWMClockSet(M1PWM,PWM6);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
-	 PWMPinConfigure(M1PWM,PWM6); 
+	 PWMPinConfigure(M1PWM,PWM6);
 	
-    	
+	 PWMGenDisable(M1PWM,Generator_3);                                                                    
+	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);
+	 PWMGenSet(M1PWM, PWM6, Count_DOWN);                                             
 	 
-#if 1
-	
-	 PWMGenDisable(M1PWM,Generator_3,PWM6);                                                                    
-	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                             
-	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50);   
-	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,75);
+	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,25);
 	 PWMGenEnable(M1PWM,Generator_3, PWM6);
 	
-#endif
+
 	
 	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
 	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
@@ -79,7 +77,8 @@ void Motor_Start(void)
 void Motor_Stop(void)
 {
 	/*Disable Motor_1*/
-  PWMGenDisable(M1PWM,Generator_3, PWM6);
+  PWMGenDisable(M1PWM,Generator_3);
+  
 }
 
 void Motor_GoForward(void)
