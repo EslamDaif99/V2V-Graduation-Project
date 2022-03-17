@@ -18,7 +18,7 @@ void Motor_Init(void)
 	 PWMGenSet(M1PWM, PWM6, Count_DOWN);                                             
 	 
 	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50); 	   
-	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,25);
+	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,50);
 	 PWMGenEnable(M1PWM,Generator_3, PWM6);
 	
 

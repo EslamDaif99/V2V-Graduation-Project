@@ -4,7 +4,7 @@
 #include "tm4c123gh6pm.h"
 #include "PWM.h"
 
-uint32_t Load =0;
+uint32_t Load ;
 
 void PWMClockSet (PWM_Module module,PWM_Number number)
 {
@@ -89,7 +89,7 @@ void PWMDiv(PWM_SYSCLK_DIV div)
 {
     SET_BIT(SYSCTL_RCC_R,20);              /* Enable System Clock Divisor function  */
     SYSCTL_RCC_R|=(div<<17);
-
+    
     
 }
 
@@ -103,103 +103,103 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
             switch(number)
             {
                 case PWM0:
-									  GPIO_PORTB_LOCK_R= 0x4C4F434B;
-										GPIO_PORTB_CR_R  |=0x40;						
-										GPIO_PORTB_DIR_R |=0x40;
-    								GPIO_PORTB_AFSEL_R|=0x40;
+	                GPIO_PORTB_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTB_CR_R  |=0x40;						
+                    GPIO_PORTB_DIR_R |=0x40;
+    				GPIO_PORTB_AFSEL_R|=0x40;
                     GPIO_PORTB_PCTL_R&= ~(0x0F00000);
-    			          GPIO_PORTB_PCTL_R|=0x0400000;
-								    GPIO_PORTB_DEN_R |=0x40;
+    			    GPIO_PORTB_PCTL_R|=0x0400000;
+					GPIO_PORTB_DEN_R |=0x40;
                     break;
 
                 case PWM1:
-									  GPIO_PORTB_LOCK_R= 0x4C4F434B;
-										GPIO_PORTB_CR_R  |=0x80;						
-										GPIO_PORTB_DIR_R |=0x80;
+                    GPIO_PORTB_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTB_CR_R  |=0x80;						
+                    GPIO_PORTB_DIR_R |=0x80;
                     GPIO_PORTB_AFSEL_R|=0x80;
-    			          GPIO_PORTB_PCTL_R&= ~(0xF000000);
-						     		GPIO_PORTB_PCTL_R|=0x4000000;
-								    GPIO_PORTB_DEN_R |=0x80;
+                    GPIO_PORTB_PCTL_R&= ~(0xF000000);
+                    GPIO_PORTB_PCTL_R|=0x4000000;
+                    GPIO_PORTB_DEN_R |=0x80;
                     break;
 
                 case PWM2:
-									  GPIO_PORTB_LOCK_R= 0x4C4F434B;
-										GPIO_PORTB_CR_R  |=0x10;						
-										GPIO_PORTB_DIR_R |=0x10;
+                    GPIO_PORTB_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTB_CR_R  |=0x10;						
+                    GPIO_PORTB_DIR_R |=0x10;
                     GPIO_PORTB_AFSEL_R|=0x10;
                     GPIO_PORTB_PCTL_R&= ~(0x0000F000);
-    			          GPIO_PORTB_PCTL_R|=0x0004000;
-								    GPIO_PORTB_DEN_R |=0x10; 
+                    GPIO_PORTB_PCTL_R|=0x0004000;
+                    GPIO_PORTB_DEN_R |=0x10; 
                     break;
 
                 case PWM3:
-									  GPIO_PORTB_LOCK_R= 0x4C4F434B;
-										GPIO_PORTB_CR_R  |=0x20;						
-										GPIO_PORTB_DIR_R |=0x20;
+                    GPIO_PORTB_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTB_CR_R  |=0x20;						
+                    GPIO_PORTB_DIR_R |=0x20;
                     GPIO_PORTB_AFSEL_R|=0x20;
                     GPIO_PORTB_PCTL_R&= ~(0x00F00000);
-    			          GPIO_PORTB_PCTL_R|=0x00400000;
-								    GPIO_PORTB_DEN_R |=0x20; 
+    			    GPIO_PORTB_PCTL_R|=0x00400000;
+					GPIO_PORTB_DEN_R |=0x20; 
                     break;
 
                 case PWM4:
-									  GPIO_PORTE_LOCK_R= 0x4C4F434B;
-										GPIO_PORTE_CR_R  |=0x10;						
-										GPIO_PORTE_DIR_R |=0x10;
+                    GPIO_PORTE_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTE_CR_R  |=0x10;						
+                    GPIO_PORTE_DIR_R |=0x10;
                     GPIO_PORTE_AFSEL_R|=0x10;
                     GPIO_PORTE_PCTL_R&= ~(0x00F0000);
-    			          GPIO_PORTE_PCTL_R|=0x0040000;
-								    GPIO_PORTE_DEN_R |=0x10; 
+    			    GPIO_PORTE_PCTL_R|=0x0040000;
+					GPIO_PORTE_DEN_R |=0x10; 
                     break;
 
                 case PWM5:
-									  GPIO_PORTE_LOCK_R= 0x4C4F434B;
-								    GPIO_PORTE_CR_R  |=0x20;						
-										GPIO_PORTE_DIR_R |=0x20;  
+					GPIO_PORTE_LOCK_R= 0x4C4F434B;
+					GPIO_PORTE_CR_R  |=0x20;						
+					GPIO_PORTE_DIR_R |=0x20;  
                     GPIO_PORTE_AFSEL_R|=0x20;
                     GPIO_PORTE_PCTL_R&= ~(0x00F00000);
-  			            GPIO_PORTE_PCTL_R|=0x00400000;
-								    GPIO_PORTE_DEN_R |=0x20; 								
+  			        GPIO_PORTE_PCTL_R|=0x00400000;
+					GPIO_PORTE_DEN_R |=0x20; 								
 								
 																
 
                     break;
 
                 case PWM6:
-									  GPIO_PORTD_LOCK_R= 0x4C4F434B;
-								    GPIO_PORTD_CR_R  |=0x01;						
-										GPIO_PORTD_DIR_R |=0x01;
+					GPIO_PORTD_LOCK_R= 0x4C4F434B;
+					GPIO_PORTD_CR_R  |=0x01;						
+					GPIO_PORTD_DIR_R |=0x01;
                     GPIO_PORTD_AFSEL_R|=0x01;
                     GPIO_PORTD_PCTL_R&= ~(0x0000000F);
-    			          GPIO_PORTD_PCTL_R|=0x00000004;
-								    GPIO_PORTD_DEN_R |=0x01;
+    			    GPIO_PORTD_PCTL_R|=0x00000004;
+					GPIO_PORTD_DEN_R |=0x01;
 								
-										GPIO_PORTC_LOCK_R= 0x4C4F434B;
-										GPIO_PORTC_CR_R  |=0x10;						
-										GPIO_PORTC_DIR_R |=0x10;
-     								GPIO_PORTC_AFSEL_R|=0x10;
+					GPIO_PORTC_LOCK_R= 0x4C4F434B;
+					GPIO_PORTC_CR_R  |=0x10;						
+					GPIO_PORTC_DIR_R |=0x10;
+     				GPIO_PORTC_AFSEL_R|=0x10;
                     GPIO_PORTC_PCTL_R&= ~(0x000F0000);
-    			          GPIO_PORTC_PCTL_R|=00040000;
-								    GPIO_PORTC_DEN_R |=0x10;
+    			    GPIO_PORTC_PCTL_R|=00040000;
+					GPIO_PORTC_DEN_R |=0x10;
                     break;
 
                 case PWM7:
-									  GPIO_PORTD_LOCK_R= 0x4C4F434B;
-										GPIO_PORTD_CR_R  |=0x02;						
-										GPIO_PORTD_DIR_R |=0x02;
+                    GPIO_PORTD_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTD_CR_R  |=0x02;						
+                    GPIO_PORTD_DIR_R |=0x02;
                     GPIO_PORTD_AFSEL_R|=0x02;
                     GPIO_PORTD_PCTL_R&= ~(0x000000F0); 
-    			          GPIO_PORTD_PCTL_R|=0x00000040;
-								    GPIO_PORTD_DEN_R |=0x02;
+    			    GPIO_PORTD_PCTL_R|=0x00000040;
+					GPIO_PORTD_DEN_R |=0x02;
 
 								
-								    GPIO_PORTC_LOCK_R= 0x4C4F434B;
-										GPIO_PORTC_CR_R  |=0x20;						
-										GPIO_PORTC_DIR_R |=0x20; 
-     								GPIO_PORTC_AFSEL_R|=0x20;
+                    GPIO_PORTC_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTC_CR_R  |=0x20;						
+                    GPIO_PORTC_DIR_R |=0x20; 
+                    GPIO_PORTC_AFSEL_R|=0x20;
                     GPIO_PORTC_PCTL_R&= ~(0x00F00000); 
-   			            GPIO_PORTC_PCTL_R|=0x00400000; 
-								    GPIO_PORTC_DEN_R |=0x20;
+                    GPIO_PORTC_PCTL_R|=0x00400000; 
+                    GPIO_PORTC_DEN_R |=0x20;
                     break;
             }
 
@@ -208,102 +208,102 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
                 switch(number)
             {
                 case PWM0:
-										GPIO_PORTD_LOCK_R= 0x4C4F434B;
-										GPIO_PORTD_CR_R  |=0x01;						
-										GPIO_PORTD_DIR_R |=0x01;
+                    GPIO_PORTD_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTD_CR_R  |=0x01;						
+                    GPIO_PORTD_DIR_R |=0x01;
                     GPIO_PORTD_AFSEL_R|=0x01;
                     GPIO_PORTD_PCTL_R&= ~(0x0000000F);
                     GPIO_PORTD_PCTL_R|= 0x00000005;    			   
-								    GPIO_PORTD_DEN_R |=0x01;
+					GPIO_PORTD_DEN_R |=0x01;
                     break;
 
                 case PWM1:
-									  GPIO_PORTD_LOCK_R= 0x4C4F434B;
-										GPIO_PORTD_CR_R  |=0x02;						
-										GPIO_PORTD_DIR_R |=0x02; 
-    								GPIO_PORTD_AFSEL_R|=0x02;
+                    GPIO_PORTD_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTD_CR_R  |=0x02;						
+                    GPIO_PORTD_DIR_R |=0x02; 
+                    GPIO_PORTD_AFSEL_R|=0x02;
                     GPIO_PORTD_PCTL_R&= ~(0x000000F0);
                     GPIO_PORTD_PCTL_R|=0x00000050;   			   
-								    GPIO_PORTD_DEN_R |=0x02;
+					GPIO_PORTD_DEN_R |=0x02;
                     break;
 
                 case PWM2:
-									  GPIO_PORTA_LOCK_R= 0x4C4F434B;
-										GPIO_PORTA_CR_R  |=0x40;						
-										GPIO_PORTA_DIR_R |=0x40; 
-    								GPIO_PORTA_AFSEL_R|=0x40;
+                    GPIO_PORTA_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTA_CR_R  |=0x40;						
+                    GPIO_PORTA_DIR_R |=0x40; 
+                    GPIO_PORTA_AFSEL_R|=0x40;
                     GPIO_PORTA_PCTL_R&= ~(0x0F000000);
-   			            GPIO_PORTA_PCTL_R|=0x05000000;
-								    GPIO_PORTA_DEN_R |=0x40;
+   			        GPIO_PORTA_PCTL_R|=0x05000000;
+					GPIO_PORTA_DEN_R |=0x40;
 								
 								
-								    GPIO_PORTE_LOCK_R= 0x4C4F434B;
-										GPIO_PORTE_CR_R  |=0x10;						
-										GPIO_PORTE_DIR_R |=0x10;
+                    GPIO_PORTE_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTE_CR_R  |=0x10;						
+                    GPIO_PORTE_DIR_R |=0x10;
                     GPIO_PORTE_AFSEL_R|=0x10;
                     GPIO_PORTE_PCTL_R&= ~(0x000F0000);
                     GPIO_PORTE_PCTL_R|=0x00050000;    
-								    GPIO_PORTE_DEN_R |=0x10;
+					GPIO_PORTE_DEN_R |=0x10;
                     break;
 
                 case PWM3:
-									  GPIO_PORTA_LOCK_R= 0x4C4F434B;
-										GPIO_PORTA_CR_R  |=0x80;						
-										GPIO_PORTA_DIR_R |=0x80;
+					GPIO_PORTA_LOCK_R= 0x4C4F434B;
+					GPIO_PORTA_CR_R  |=0x80;						
+					GPIO_PORTA_DIR_R |=0x80;
                     GPIO_PORTA_AFSEL_R|=0x80;
                     GPIO_PORTA_PCTL_R &= ~(0xF0000000);
-										GPIO_PORTA_PCTL_R|=0x50000000;
-								    GPIO_PORTA_DEN_R |=0x80;
+					GPIO_PORTA_PCTL_R|=0x50000000;
+					GPIO_PORTA_DEN_R |=0x80;
 								
 								
 								
-										GPIO_PORTE_LOCK_R= 0x4C4F434B;
-										GPIO_PORTE_CR_R  |=0x20;						
-										GPIO_PORTE_DIR_R |=0x20;
+                    GPIO_PORTE_LOCK_R= 0x4C4F434B;
+                    GPIO_PORTE_CR_R  |=0x20;						
+                    GPIO_PORTE_DIR_R |=0x20;
                     GPIO_PORTE_AFSEL_R|=0x20;
                     GPIO_PORTE_PCTL_R &= ~(0x00F00000);
-										GPIO_PORTE_PCTL_R|=0x00500000;
-								    GPIO_PORTE_DEN_R |=0x20;          
+					GPIO_PORTE_PCTL_R|=0x00500000;
+					GPIO_PORTE_DEN_R |=0x20;          
                     break;
 
                 case PWM4:
-									  GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
-										GPIO_PORTF_CR_R  |=0x01;							/*TO MAKE SURE THAT I WILL USE  PIN0*/
-										GPIO_PORTF_DIR_R |=0x01;    			    /* WE SET PIN0 output*/
+                    GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
+                    GPIO_PORTF_CR_R  |=0x01;							/*TO MAKE SURE THAT I WILL USE  PIN0*/
+                    GPIO_PORTF_DIR_R |=0x01;    			    /* WE SET PIN0 output*/
                     GPIO_PORTF_AFSEL_R|=0x01;
                     GPIO_PORTF_PCTL_R &= ~(0x0000000F);
-							    	GPIO_PORTF_PCTL_R|=0x00000005;
-								    GPIO_PORTF_DEN_R |=0x01;            /* set PF0 as a digital pin */
+                    GPIO_PORTF_PCTL_R|=0x00000005;
+                    GPIO_PORTF_DEN_R |=0x01;            /* set PF0 as a digital pin */
                     break;
 
                 case PWM5:
-									  GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
-									  GPIO_PORTF_CR_R  |=0x02;							/*TO MAKE SURE THAT I WILL USE  PIN1*/
-										GPIO_PORTF_DIR_R |=0x02;    			    /* WE SET PIN1 output*/
+                    GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
+                    GPIO_PORTF_CR_R  |=0x02;							/*TO MAKE SURE THAT I WILL USE  PIN1*/
+                    GPIO_PORTF_DIR_R |=0x02;    			    /* WE SET PIN1 output*/
                     GPIO_PORTF_AFSEL_R|=0x02;
                     GPIO_PORTF_PCTL_R &= ~(0x000000F0);
-								    GPIO_PORTF_PCTL_R|=0x00000050;
-								    GPIO_PORTF_DEN_R |=0x02;            /* set PF1 as a digital pin */
+                    GPIO_PORTF_PCTL_R|=0x00000050;
+                    GPIO_PORTF_DEN_R |=0x02;            /* set PF1 as a digital pin */
                     break;
 
                 case PWM6:
-										GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
-										GPIO_PORTF_CR_R  |=0x04;							 /*TO MAKE SURE THAT I WILL USE  PIN2*/
-										GPIO_PORTF_DIR_R |=0x04;    			    /*WE SET PIN2 output*/
+                    GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
+                    GPIO_PORTF_CR_R  |=0x04;							 /*TO MAKE SURE THAT I WILL USE  PIN2*/
+                    GPIO_PORTF_DIR_R |=0x04;    			    /*WE SET PIN2 output*/
                     GPIO_PORTF_AFSEL_R|=0x04;
-									  GPIO_PORTF_PCTL_R &= ~(0x00000F00);
+                    GPIO_PORTF_PCTL_R &= ~(0x00000F00);
                     GPIO_PORTF_PCTL_R|=0x00000500;
-								    GPIO_PORTF_DEN_R |=0x04;            /* set PF2 as a digital pin */
+                    GPIO_PORTF_DEN_R |=0x04;            /* set PF2 as a digital pin */
                     break;
 
                 case PWM7:
-									  GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
-										GPIO_PORTF_CR_R  |=0x08;							 
-										GPIO_PORTF_DIR_R |=0x08;    			    /* WE SET PIN3 output*/
+                    GPIO_PORTF_LOCK_R= 0x4C4F434B; 			  //TO UN LOCK THE PORTF
+                    GPIO_PORTF_CR_R  |=0x08;							 
+                    GPIO_PORTF_DIR_R |=0x08;    			    /* WE SET PIN3 output*/
                     GPIO_PORTF_AFSEL_R|=0x08;
-										GPIO_PORTF_PCTL_R&= ~(0x0000F000);
+                    GPIO_PORTF_PCTL_R&= ~(0x0000F000);
                     GPIO_PORTF_PCTL_R|=0x00005000;
-								    GPIO_PORTF_DEN_R |=0x08;            /* set PF3 as a digital pin */
+                    GPIO_PORTF_DEN_R |=0x08;            /* set PF3 as a digital pin */
                     break;
                 default:
                         /*Do nothing*/ break;
@@ -374,8 +374,8 @@ void PWMGenDisable(PWM_Module module, PWM_Generator generator)
                     break;
 
                 case Generator_3 :
-                    //CLR_BIT (PWM1_3_CTL_R,0);	
-										PWM1_3_CTL_R &= ~(1<<0);	   /* Disable Generator 3 counter */								
+                    CLR_BIT (PWM1_3_CTL_R,0);	
+													
                     	
                     break;
 
@@ -667,8 +667,8 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                             break;
                         
                         case Count_DOWN:	
-													  PWM1_3_CTL_R &= ~(1<<1);  	 /* select down count mode of counter 3*/
-//                            CLR_BIT(PWM1_3_CTL_R,1);
+                           
+                            CLR_BIT(PWM1_3_CTL_R,1);
                             break;
                         
                         default:
@@ -729,8 +729,9 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-                            PWM0_0_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM0_0_GENA_R|=(Drive_pwmA_Low<<7);
+                            //PWM0_0_GENA_R|=(Drive_pwmA_High<<2);
+                            //PWM0_0_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM0_0_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
 
                         default:
@@ -767,8 +768,10 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-                            PWM0_1_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM0_1_GENA_R|=(Drive_pwmA_Low<<7);
+                          //  PWM0_1_GENA_R|=(Drive_pwmA_High<<2);
+                          //  PWM0_1_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM0_1_GENA_R|=(1<<2)|(1<<3)|(1<<7);
+
                             break;
 
                         default:
@@ -803,8 +806,9 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-                            PWM0_2_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM0_2_GENA_R|=(Drive_pwmA_Low<<7);
+                            //PWM0_2_GENA_R|=(Drive_pwmA_High<<2);
+                            //PWM0_2_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM0_2_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
 
                         default:
@@ -839,8 +843,9 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-                            PWM0_3_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM0_3_GENA_R|=(Drive_pwmA_Low<<7);
+                           // PWM0_3_GENA_R|=(Drive_pwmA_High<<2);
+                           // PWM0_3_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM0_3_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
 
                         default:
@@ -884,8 +889,9 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-                            PWM1_0_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM1_0_GENA_R|=(Drive_pwmA_Low<<7);
+                            //PWM1_0_GENA_R|=(Drive_pwmA_High<<2);
+                            //PWM1_0_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM1_0_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
 
                         default:
@@ -921,8 +927,9 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-                            PWM1_1_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM1_1_GENA_R|=(Drive_pwmA_Low<<7);
+                            //PWM1_1_GENA_R|=(Drive_pwmA_High<<2);
+                            //PWM1_1_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM1_1_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
 
                         default:
@@ -993,9 +1000,9 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
                             break;
 
                         case Count_DOWN:
-//                            PWM1_3_GENA_R|=(Drive_pwmA_High<<2);
-//                            PWM1_3_GENA_R|=(Drive_pwmA_Low<<7);
-												      PWM1_3_GENA_R = 0x0000008C;  /* Set PWM output when counter reloaded set(pin 2,3) and clear when matches PWMCMPA put 0 in pin6and 1 in pin7)*/
+                            //PWM1_3_GENA_R|=(Drive_pwmA_High<<2);
+                            //PWM1_3_GENA_R|=(Drive_pwmA_Low<<7);
+                            PWM1_3_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
 
                         default:
@@ -1035,7 +1042,7 @@ void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
 
 void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV div, uint32_t Clock_Required)
 {
-        uint32_t System_Clock;
+        uint32_t System_Clock=0;
         switch(div)
         {   
             case PWM_SYSCLK_DIV_2:
@@ -1068,7 +1075,7 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
         }
         
         Load =System_Clock/Clock_Required;      /*Load Value passed to  "PWMPulseWidthSet" function */
-
+        //Load =5000;
         switch(module)
         {
             case M0PWM:
@@ -1112,6 +1119,7 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
 
                     case Generator_3 :
                         PWM1_3_LOAD_R=Load;
+                        //PWM1_3_LOAD_R = 5000;
                         break;
 
                     default:
@@ -1130,8 +1138,11 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
 
 void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32_t duty_cycle)
 {
-//		Load =System_Clock/Clock_Required;      /*Load Value passed to  "PWMPulseWidthSet" function */
-	  //Load =250000/50;      /*Load Value passed to  "PWMPulseWidthSet" function */
+   /*	Load =System_Clock/Clock_Required;  */ 
+   /*Load Value passed to  "PWMPulseWidthSet" function */
+	      /*Load Value passed to  "PWMPulseWidthSet" function */
+    Load =5000;
+    uint32_t y =0;
     switch(module)
     { 
       case M0PWM:
@@ -1143,11 +1154,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_0_CMPA_R=(duty_cycle/100)*Load;
+                            PWM0_0_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_0_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM0_0_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1160,11 +1171,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_0_CMPB_R=(duty_cycle/100)*Load;                            
+                            PWM0_0_CMPB_R=((duty_cycle/100)*Load)-1;                            
                             break;
 
                         case Count_DOWN:
-                            PWM0_0_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM0_0_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1178,11 +1189,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_1_CMPA_R=(duty_cycle/100)*Load;
+                            PWM0_1_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_1_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM0_1_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1195,11 +1206,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_1_CMPB_R=(duty_cycle/100)*Load;
+                            PWM0_1_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_1_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM0_1_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1212,11 +1223,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_2_CMPA_R=(duty_cycle/100)*Load;
+                            PWM0_2_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_2_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM0_2_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1229,11 +1240,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_2_CMPB_R=(duty_cycle/100)*Load;
+                            PWM0_2_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_2_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM0_2_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1246,11 +1257,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_3_CMPA_R=(duty_cycle/100)*Load;
+                            PWM0_3_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_3_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM0_3_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1263,11 +1274,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_3_CMPB_R=(duty_cycle/100)*Load;
+                            PWM0_3_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_3_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM0_3_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
 
@@ -1289,11 +1300,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_0_CMPA_R=(duty_cycle/100)*Load;
+                            PWM1_0_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_0_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM1_0_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1306,11 +1317,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_0_CMPB_R=(duty_cycle/100)*Load;
+                            PWM1_0_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_0_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM1_0_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1324,11 +1335,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_1_CMPA_R=(duty_cycle/100)*Load;
+                            PWM1_1_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_1_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM1_1_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1341,11 +1352,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_1_CMPB_R=(duty_cycle/100)*Load;
+                            PWM1_1_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_1_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM1_1_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1358,11 +1369,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_2_CMPA_R=(duty_cycle/100)*Load;
+                            PWM1_2_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_2_CMPA_R=((100-duty_cycle)/100)*Load;
+                            PWM1_2_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1375,11 +1386,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_2_CMPB_R=(duty_cycle/100)*Load;
+                            PWM1_2_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_2_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM1_2_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
@@ -1392,11 +1403,13 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_3_CMPA_R=(duty_cycle/100)*Load;
+                            PWM1_3_CMPA_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_3_CMPA_R=((100-duty_cycle)/100)*Load;
+                            //PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
+                            y = (((100-75)*0.01)*5000);
+                            PWM1_3_CMPA_R =y-1;
                             break;
 
                         default:
@@ -1409,11 +1422,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_3_CMPB_R=(duty_cycle/100)*Load;
+                            PWM1_3_CMPB_R=((duty_cycle/100)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_3_CMPB_R=((100-duty_cycle)/100)*Load;
+                            PWM1_3_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
                             break;
 
                         default:
