@@ -4,6 +4,7 @@
 #include "tm4c123gh6pm.h"
 #include "PWM.h"
 
+
 uint32_t Load ;
 
 void PWMClockSet (PWM_Module module,PWM_Number number)
@@ -82,8 +83,6 @@ void PWMClockSet (PWM_Module module,PWM_Number number)
 			default: break;
 		}
 }
-
-
 
 void PWMDiv(PWM_SYSCLK_DIV div)
 {
@@ -408,10 +407,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_0_CTL_R,1);
+                            PWM0_0_GENA_R|=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_0_CTL_R,1);
+                            PWM0_0_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -426,10 +427,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_0_CTL_R,1);
+                            PWM0_0_GENB_R|=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_0_CTL_R,1);
+                            PWM0_0_GENB_R|=(1<<11)|(1<<12);
                             break;
                         
                         default:
@@ -444,10 +447,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_1_CTL_R,1);
+                            PWM0_1_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_1_CTL_R,1);
+                            PWM0_1_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -462,10 +467,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_1_CTL_R,1);
+                            PWM0_1_GENB_R|=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_1_CTL_R,1);
+                            PWM0_1_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -480,10 +487,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_2_CTL_R,1);
+                            PWM0_2_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_2_CTL_R,1);
+                            PWM0_2_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -498,10 +507,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_2_CTL_R,1);
+                            PWM0_2_GENB_R|=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_2_CTL_R,1);
+                            PWM0_2_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -515,10 +526,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_3_CTL_R,1);
+                            PWM0_3_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_3_CTL_R,1);
+                            PWM0_3_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -533,10 +546,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM0_3_CTL_R,1);
+                            PWM0_3_GENB_R=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM0_3_CTL_R,1);
+                            PWM0_3_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -557,10 +572,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_0_CTL_R,1);
+                            PWM1_0_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_0_CTL_R,1);
+                            PWM1_0_GENA_R|=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -575,10 +592,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_0_CTL_R,1);
+                            PWM1_0_GENB_R=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_0_CTL_R,1);
+                            PWM1_0_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -592,10 +611,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_2_CTL_R,1);
+                            PWM1_1_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_2_CTL_R,1);
+                            PWM1_1_GENA_R=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -610,10 +631,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_1_CTL_R,1);
+                            PWM1_1_GENB_R=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_1_CTL_R,1);
+                            PWM1_1_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -628,10 +651,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_2_CTL_R,1);
+                            PWM1_2_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_2_CTL_R,1);
+                            PWM1_2_GENA_R=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -646,10 +671,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_2_CTL_R,1);
+                            PWM1_2_GENB_R=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_2_CTL_R,1);
+                            PWM1_2_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -664,11 +691,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_3_CTL_R,1);
+                            PWM1_3_GENA_R=(1<<3)|(1<<4);
                             break;
                         
                         case Count_DOWN:	
-                           
                             CLR_BIT(PWM1_3_CTL_R,1);
+                            PWM1_3_GENA_R=(1<<2)|(1<<3)|(1<<7);
                             break;
                         
                         default:
@@ -683,10 +711,12 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
                     {
                         case Count_UP:
                             SET_BIT(PWM1_3_CTL_R,1);
+                            PWM1_3_GENB_R=(1<<9)|(1<<10);
                             break;
                         
                         case Count_DOWN:	
                             CLR_BIT(PWM1_3_CTL_R,1);
+                            PWM1_3_GENB_R=(1<<2)|(1<<3)|(1<<11);
                             break;
                         
                         default:
@@ -708,337 +738,6 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
 
 
 }
-
-
-void PWMGenSet(PWM_Module module, PWM_Number number, PWM_Mode mode)
-{
-
-    switch(module)
-    { 
-      case M0PWM:
-
-            switch(number)
-            {
-                case PWM0: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_0_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM0_0_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                            //PWM0_0_GENA_R|=(Drive_pwmA_High<<2);
-                            //PWM0_0_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM0_0_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/	break;
-                    }
-                    break;
-
-                case PWM1: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_0_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:    
-                            PWM0_0_GENB_R|=(Drive_pwmA_High<<11);
-                            
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-
-                    }
-                    break;
-
-                case PWM2: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_1_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM0_1_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                          //  PWM0_1_GENA_R|=(Drive_pwmA_High<<2);
-                          //  PWM0_1_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM0_1_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM3: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_1_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM0_1_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM4: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_2_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM0_2_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                            //PWM0_2_GENA_R|=(Drive_pwmA_High<<2);
-                            //PWM0_2_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM0_2_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM5: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_2_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM0_2_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM6: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_3_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM0_3_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                           // PWM0_3_GENA_R|=(Drive_pwmA_High<<2);
-                           // PWM0_3_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM0_3_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM7: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM0_3_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM0_3_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-                default:
-                /*Do nothing*/break;
-            }
-            break;
-
-    case M1PWM:
-
-            switch(number)
-            {
-                case PWM0: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_0_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM1_0_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                            //PWM1_0_GENA_R|=(Drive_pwmA_High<<2);
-                            //PWM1_0_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM1_0_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM1: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_0_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM1_0_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-
-                    }
-                    break;
-
-                case PWM2: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_1_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM1_1_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                            //PWM1_1_GENA_R|=(Drive_pwmA_High<<2);
-                            //PWM1_1_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM1_1_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM3: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_1_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM1_1_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM4: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_2_GENA_R|=(Drive_pwmA_High<<3);
-                            PWM1_2_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                            PWM1_2_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM1_2_GENA_R|=(Drive_pwmA_Low<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM5: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_2_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM1_2_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM6: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_3_GENA_R|=(Drive_pwmA_High<<2);
-                            PWM1_3_GENA_R|=(Do_nothing<<5);
-                            break;
-
-                        case Count_DOWN:
-                            //PWM1_3_GENA_R|=(Drive_pwmA_High<<2);
-                            //PWM1_3_GENA_R|=(Drive_pwmA_Low<<7);
-                            PWM1_3_GENA_R|=(1<<2)|(1<<3)|(1<<7);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-
-                case PWM7: 
-
-                    switch(mode)
-                    {
-                        case Count_UP:
-                            PWM1_3_GENB_R|=(Drive_pwmA_High<<9);
-                            break;
-
-                        case Count_DOWN:
-                            PWM1_3_GENB_R|=(Drive_pwmA_High<<11);
-                            break;
-
-                        default:
-                        /*Do nothing*/break;
-                    }
-                    break;
-                default:
-                /*Do nothing*/break;
-            }
-            break;
-      
-        
-     default:
-            /*Do Nothing */break;
-
-  }
-
-}
-
 
 void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV div, uint32_t Clock_Required)
 {
@@ -1142,6 +841,7 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
    /*Load Value passed to  "PWMPulseWidthSet" function */
 	      /*Load Value passed to  "PWMPulseWidthSet" function */
     Load =5000;
+  
     uint32_t y =0;
     switch(module)
     { 
@@ -1373,7 +1073,9 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         case Count_DOWN:
-                            PWM1_2_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                           // PWM1_2_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            y = (((100-50)*0.01)*5000);
+                            PWM1_2_CMPA_R=y-1;
                             break;
 
                         default:
@@ -1390,7 +1092,9 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         case Count_DOWN:
-                            PWM1_2_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            //PWM1_2_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            y = (((100-50)*0.01)*5000);
+                            PWM1_2_CMPB_R =y-1;
                             break;
 
                         default:
@@ -1408,7 +1112,8 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
 
                         case Count_DOWN:
                             //PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
-                            y = (((100-75)*0.01)*5000);
+                            
+                            y = (((100-50)*0.01)*5000);
                             PWM1_3_CMPA_R =y-1;
                             break;
 
@@ -1426,7 +1131,9 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         case Count_DOWN:
-                            PWM1_3_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            //PWM1_3_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            y = (((100-50)*0.01)*5000);
+                            PWM1_3_CMPB_R=y-1;
                             break;
 
                         default:
