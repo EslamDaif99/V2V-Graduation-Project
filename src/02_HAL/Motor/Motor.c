@@ -11,53 +11,44 @@ void Motor_Init(void)
 	 PWMClockSet(M1PWM,PWM4);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
 	 PWMPinConfigure(M1PWM,PWM4);
-	
-	 PWMGenDisable(M1PWM,Generator_2);                                                                    
+	 PWMGenDisable(M1PWM,PWM4);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM4);                                           
-	 
-	 PWMGenPeriodSet(M1PWM,Generator_2,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMGenPeriodSet(M1PWM,PWM4,PWM_SYSCLK_DIV_64,50); 	   
 	 PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,50);
-	 PWMGenEnable(M1PWM,Generator_2, PWM4);
+	 PWMGenEnable(M1PWM,PWM4);
 
 
 	/*****PWM_MOTOR_2****PORTF***PIN1*****/
 	 PWMClockSet(M1PWM,PWM5);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
 	 PWMPinConfigure(M1PWM,PWM5);
-	
-	 PWMGenDisable(M1PWM,Generator_2);                                                                    
+	 PWMGenDisable(M1PWM,PWM5);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM5);                                            
-	 
-	 PWMGenPeriodSet(M1PWM,Generator_2,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMGenPeriodSet(M1PWM,PWM5,PWM_SYSCLK_DIV_64,50); 	   
 	 PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,50);
-	 PWMGenEnable(M1PWM,Generator_2, PWM5);
+	 PWMGenEnable(M1PWM,PWM5);
 
 	/*****PWM_Motor_3***PORTF***PIN2*******/
 
 	 PWMClockSet(M1PWM,PWM6);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
 	 PWMPinConfigure(M1PWM,PWM6);
-	
-	 PWMGenDisable(M1PWM,Generator_3);                                                                    
+	 PWMGenDisable(M1PWM,PWM6);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                           
-	 
-	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMGenPeriodSet(M1PWM,PWM6,PWM_SYSCLK_DIV_64,50); 	   
 	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,50);
-	 PWMGenEnable(M1PWM,Generator_3, PWM6);
+	 PWMGenEnable(M1PWM,PWM6);
 	
 
 	/*****PWM_Motor_4***PORTF***PIN3*******/
-
 	 PWMClockSet(M1PWM,PWM7);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
 	 PWMPinConfigure(M1PWM,PWM7);
-	
-	 PWMGenDisable(M1PWM,Generator_3);                                                                    
+	 PWMGenDisable(M1PWM,PWM7);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM7);                                          
-	 
-	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMGenPeriodSet(M1PWM,PWM7,PWM_SYSCLK_DIV_64,50); 	   
 	 PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,50);
-	 PWMGenEnable(M1PWM,Generator_3, PWM7);
+	 PWMGenEnable(M1PWM,PWM7);
 
 
     /********MOTOR_1*******/
@@ -110,14 +101,25 @@ void Motor_Update(void)
 void Motor_Start(void)
 {
 	 /*Enable Motor_1*/
-	 PWMGenEnable(M1PWM,Generator_3, PWM6);
+	 PWMGenEnable(M1PWM,PWM4);	
+	 /*Enable Motor_2*/
+	 PWMGenEnable(M1PWM,PWM5);	
+	 /*Enable Motor_3*/
+	 PWMGenEnable(M1PWM,PWM6);
+	 /*Enable Motor_4*/
+	 PWMGenEnable(M1PWM,PWM7);	 
 }
 
 void Motor_Stop(void)
 {
-	/*Disable Motor_1*/
-  PWMGenDisable(M1PWM,Generator_3);
-  
+  /*Disable Motor_1*/
+  PWMGenDisable(M1PWM,PWM4);
+  /*Disable Motor_2*/
+  PWMGenDisable(M1PWM,PWM5);
+  /*Disable Motor_3*/
+  PWMGenDisable(M1PWM,PWM6);
+  /*Disable Motor_4*/
+  PWMGenDisable(M1PWM,PWM7);
 }
 
 void Motor_GoForward(void)

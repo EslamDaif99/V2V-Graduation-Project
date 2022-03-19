@@ -320,67 +320,48 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
 }
 
 
-void PWMGenDisable(PWM_Module module, PWM_Generator generator)
+void PWMGenDisable(PWM_Module module,PWM_Number number)
 {
     switch(module)
     {
         case M0PWM:
-            switch(generator)
+            if( (number==PWM0) ||(number==PWM1) )
             {
-                case Generator_0 :
-									
-                    CLR_BIT (PWM0_0_CTL_R,0);
-                    
-                    break;
-
-                case Generator_1 :
-                    CLR_BIT (PWM0_1_CTL_R,0);
-                    
-                    break;
-
-                case Generator_2 :
-                    CLR_BIT (PWM0_2_CTL_R,0);
-                    
-                    break;
-
-                case Generator_3 :
-                    CLR_BIT (PWM0_3_CTL_R,0);
-                    
-                    break;
-
-                default:
-                    /*Do Nothing */ break;
+                CLR_BIT (PWM0_0_CTL_R,0);
             }
+            else if((number==PWM2) ||(number==PWM3))
+            {
+                CLR_BIT (PWM0_1_CTL_R,0);
+            }
+            else if((number==PWM4) ||(number==PWM5))
+            {
+                CLR_BIT (PWM0_2_CTL_R,0);
+            }
+             else if((number==PWM6) ||(number==PWM7))
+            {
+                CLR_BIT (PWM0_3_CTL_R,0);
+            }
+            else {/*Do nothing*/}
             break;
 
         case M1PWM:
-            switch(generator)
+            if( (number==PWM0) ||(number==PWM1) )
             {
-                case Generator_0 :
-                    CLR_BIT (PWM1_0_CTL_R,0);
-										
-                   
-                    break;
-
-                case Generator_1 :
-                    CLR_BIT (PWM1_1_CTL_R,0);
-                   
-                    break;
-
-                case Generator_2 :
-                    CLR_BIT (PWM1_2_CTL_R,0);
-                    
-                    break;
-
-                case Generator_3 :
-                    CLR_BIT (PWM1_3_CTL_R,0);	
-													
-                    	
-                    break;
-
-                default:
-                    /*Do Nothing */	break;
+                CLR_BIT (PWM1_0_CTL_R,0);
             }
+            else if((number==PWM2) ||(number==PWM3))
+            {
+                CLR_BIT (PWM1_1_CTL_R,0);
+            }
+            else if((number==PWM4) ||(number==PWM5))
+            {
+                CLR_BIT (PWM1_2_CTL_R,0);
+            }
+             else if((number==PWM6) ||(number==PWM7))
+            {
+                CLR_BIT (PWM1_3_CTL_R,0);
+            }
+            else {/*Do nothing*/}
             break;
 
         default:
@@ -739,7 +720,7 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
 
 }
 
-void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV div, uint32_t Clock_Required)
+void PWMGenPeriodSet(PWM_Module module, PWM_Number number, PWM_SYSCLK_DIV div, uint32_t Clock_Required)
 {
         uint32_t System_Clock=0;
         switch(div)
@@ -778,53 +759,43 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Generator generator, PWM_SYSCLK_DIV 
         switch(module)
         {
             case M0PWM:
-                switch(generator)
+                if((number==PWM0) ||(number==PWM1))
                 {
-                    case Generator_0 :
-                        PWM0_0_LOAD_R=Load;
-                        break;
-
-                    case Generator_1 :
-                        PWM0_1_LOAD_R=Load;
-                        break;
-
-                    case Generator_2 :
-                        PWM0_2_LOAD_R=Load;
-                        break;
-
-                    case Generator_3 :
-                        PWM0_3_LOAD_R=Load;
-                        break;
-
-                    default:
-                        /*Do Nothing */break;
+                    PWM0_0_LOAD_R=Load;
                 }
-
+                else if ((number==PWM2) ||(number==PWM3))
+                {
+                    PWM0_1_LOAD_R=Load;
+                }
+                else if ((number==PWM4) ||(number==PWM5))
+                {
+                    PWM0_2_LOAD_R=Load;
+                }
+                else if ((number==PWM6) ||(number==PWM7))
+                {
+                    PWM0_3_LOAD_R=Load;
+                }
+                else{/*Do nothing*/}
                 break;
+                
             case M1PWM:
-                switch(generator)
+                if((number==PWM0) ||(number==PWM1))
                 {
-                    case Generator_0 :
-                        PWM1_0_LOAD_R=Load;
-                        break;
-
-                    case Generator_1 :
-                        PWM1_1_LOAD_R=Load;
-                        break;
-
-                    case Generator_2 :
-                        PWM1_2_LOAD_R=Load;
-                        break;
-
-                    case Generator_3 :
-                        PWM1_3_LOAD_R=Load;
-                        //PWM1_3_LOAD_R = 5000;
-                        break;
-
-                    default:
-                        /*Do Nothing */break;
-								
+                    PWM1_0_LOAD_R=Load;
                 }
+                else if ((number==PWM2) ||(number==PWM3))
+                {
+                    PWM1_1_LOAD_R=Load;
+                }
+                else if ((number==PWM4) ||(number==PWM5))
+                {
+                    PWM1_2_LOAD_R=Load;
+                }
+                else if ((number==PWM6) ||(number==PWM7))
+                {
+                    PWM1_3_LOAD_R=Load;
+                }
+                else{/*Do nothing*/}
                 break;
 
             default:
@@ -1154,85 +1125,74 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
 }
 
 
-void PWMGenEnable(PWM_Module module, PWM_Generator generator, PWM_Number number)
+void PWMGenEnable(PWM_Module module,PWM_Number number)
 {
 
     switch(module)
     {
         case M0PWM:
-            switch(generator)
+            if((number==PWM0) ||(number==PWM1))
             {
-                case Generator_0 :
                     SET_BIT (PWM0_0_CTL_R,0);
                     /***************    PWM0_ENABLE_R*********************/
-                    
-                    SET_BIT(PWM0_ENABLE_R,number);       /*The generated pwm0A' signal is passed to the MnPWM0 pin*/
-                           /*The generated pwm0B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                case Generator_1 :
-                    SET_BIT (PWM0_1_CTL_R,0);
-
-                    SET_BIT(PWM0_ENABLE_R,number);       /*The generated pwm1A' signal is passed to the MnPWM0 pin*/
-                          /*The generated pwm1B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                case Generator_2 :
-                    SET_BIT (PWM0_2_CTL_R,0);
-
-                    SET_BIT(PWM0_ENABLE_R,number);       /*The generated pwm2A' signal is passed to the MnPWM0 pin*/
-                         /*The generated pwm2B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                case Generator_3 :
-                    SET_BIT (PWM0_3_CTL_R,0);
-
-                    SET_BIT(PWM0_ENABLE_R,number);       /*The generated pwm3A' signal is passed to the MnPWM0 pin*/
-                           /*The generated pwm3B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                default:
-                    /*Do Nothing */ break;
+                    SET_BIT(PWM0_ENABLE_R,number);  
             }
+            else if ((number==PWM2) ||(number==PWM3))
+            {
+                    SET_BIT (PWM0_1_CTL_R,0);
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM0_ENABLE_R,number);  
+
+            }
+            else if ((number==PWM4) ||(number==PWM5))
+            {
+                    SET_BIT (PWM0_2_CTL_R,0);
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM0_ENABLE_R,number);  
+
+            }
+            else if ((number==PWM6) ||(number==PWM7))
+            {
+                    SET_BIT (PWM0_3_CTL_R,0);
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM0_ENABLE_R,number);  
+
+            }
+            else{/*Do nothing*/}
             break;
 
         case M1PWM:
-            switch(generator)
+
+            if((number==PWM0) ||(number==PWM1))
             {
-                case Generator_0 :
                     SET_BIT (PWM1_0_CTL_R,0);
-
-                    SET_BIT(PWM1_ENABLE_R,number);       /*The generated pwm0A' signal is passed to the MnPWM0 pin*/
-                         /*The generated pwm0B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                case Generator_1 :
-                    SET_BIT (PWM1_1_CTL_R,0);
-
-                    SET_BIT(PWM1_ENABLE_R,number);       /*The generated pwm1A' signal is passed to the MnPWM0 pin*/
-                          /*The generated pwm1B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                case Generator_2 :
-                    SET_BIT (PWM1_2_CTL_R,0);
-
-                    SET_BIT(PWM1_ENABLE_R,number);       /*The generated pwm2A' signal is passed to the MnPWM0 pin*/
-                          /*The generated pwm2B' signal is passed to the MnPWM1 pin*/
-                    break;
-
-                case Generator_3 :
-                    SET_BIT (PWM1_3_CTL_R,0);
-
-                    SET_BIT(PWM1_ENABLE_R,number);       /*The generated pwm3A' signal is passed to the MnPWM0 pin*/
-                         /*The generated pwm3B' signal is passed to the MnPWM1 pin*/
-
-                    break;
-
-                default:
-                    /*Do Nothing */ break;
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM1_ENABLE_R,number);  
             }
-            break;
+            else if ((number==PWM2) ||(number==PWM3))
+            {
+                    SET_BIT (PWM1_1_CTL_R,0);
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM1_ENABLE_R,number);  
 
+            }
+            else if ((number==PWM4) ||(number==PWM5))
+            {
+                    SET_BIT (PWM1_2_CTL_R,0);
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM1_ENABLE_R,number);  
+
+            }
+            else if ((number==PWM6) ||(number==PWM7))
+            {
+                    SET_BIT (PWM1_3_CTL_R,0);
+                    /***************    PWM0_ENABLE_R*********************/
+                    SET_BIT(PWM1_ENABLE_R,number);  
+
+            }
+            else{/*Do nothing*/}
+            break;
+            
         default:
             /*Do Nothing */  break; 
     }
