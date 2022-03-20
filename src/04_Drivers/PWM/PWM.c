@@ -1082,10 +1082,17 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                             break;
 
                         case Count_DOWN:
+
+                        PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
+
+                        #if 0
                             //PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             
                             y = (((100-50)*0.01)*5000);
                             PWM1_3_CMPA_R =y-1;
+
+                        #endif
+                        
                             break;
 
                         default:
