@@ -34,7 +34,7 @@ build: Startup.o Main.o GPIO.o LED.o SysTick.o OS.o Motor.o PWM.o UART.o
 
 Link: 
 	@echo "Linking ..."
-	@$(LINKER) $(LINKER_FLAGS) *.o -o ${OUTPUT_FILE_NAME}
+	@$(LINKER) $(LINKER_FLAGS) *.o  -o ${OUTPUT_FILE_NAME}
 
 
 Main.o : $(SOURCE_DIR)/Main.c

@@ -14,6 +14,6 @@
 #define GPIO_SWC_STATUS                     (SWC_STATUS_ENABLE)
 #define SYSTICK_SWC_STATUS                  (SWC_STATUS_ENABLE)
 #define UART_SWC_STATUS                     (SWC_STATUS_ENABLE)
-#define PWM_SWC_STATUS                      (SWC_STATUS_ENABLE)
+#define PWM_SWC_STATUS                      (SWC_STATUS_DISABLE)
 
 #endif

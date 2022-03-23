@@ -13,20 +13,51 @@ void Motor_Init(void)
 {
 #if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
 
-	/***********Motor_1**************/
+	/*****PWM_MOTOR_1****PORTF***PIN0*****/
+	 PWMClockSet(M1PWM,PWM4);	
+	 PWMDiv(PWM_SYSCLK_DIV_64);
+	 PWMPinConfigure(M1PWM,PWM4);
+	 PWMGenDisable(M1PWM,PWM4);                                                                    
+	 PWMGenConfigure(M1PWM,Count_DOWN, PWM4);                                           
+	 PWMGenPeriodSet(M1PWM,PWM4,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,50);
+	 PWMGenEnable(M1PWM,PWM4);
+
+
+	/*****PWM_MOTOR_2****PORTF***PIN1*****/
+	 PWMClockSet(M1PWM,PWM5);	
+	 PWMDiv(PWM_SYSCLK_DIV_64);
+	 PWMPinConfigure(M1PWM,PWM5);
+	 PWMGenDisable(M1PWM,PWM5);                                                                    
+	 PWMGenConfigure(M1PWM,Count_DOWN, PWM5);                                            
+	 PWMGenPeriodSet(M1PWM,PWM5,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,50);
+	 PWMGenEnable(M1PWM,PWM5);
+
+	/*****PWM_Motor_3***PORTF***PIN2*******/
 
 	 PWMClockSet(M1PWM,PWM6);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
-	 PWMPinConfigure(M1PWM,PWM6); 
+	 PWMPinConfigure(M1PWM,PWM6);
+	 PWMGenDisable(M1PWM,PWM6);                                                                    
+	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                           
+	 PWMGenPeriodSet(M1PWM,PWM6,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,50);
+	 PWMGenEnable(M1PWM,PWM6);
 	
-    	
-	
-	 PWMGenDisable(M1PWM,Generator_3,PWM6);                                                                    
-	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                             
-	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50);   
-	 PWMDutyCycleSet(M1PWM,PWM3,Count_DOWN,75);
-	 PWMGenEnable(M1PWM,Generator_3, PWM6);
 
+	/*****PWM_Motor_4***PORTF***PIN3*******/
+	 PWMClockSet(M1PWM,PWM7);	
+	 PWMDiv(PWM_SYSCLK_DIV_64);
+	 PWMPinConfigure(M1PWM,PWM7);
+	 PWMGenDisable(M1PWM,PWM7);                                                                    
+	 PWMGenConfigure(M1PWM,Count_DOWN, PWM7);                                          
+	 PWMGenPeriodSet(M1PWM,PWM7,PWM_SYSCLK_DIV_64,50); 	   
+	 PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,50);
+	 PWMGenEnable(M1PWM,PWM7);
+
+
+    /********MOTOR_1*******/
 	
 	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
 	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
@@ -81,7 +112,13 @@ void Motor_Start(void)
 #if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
 
 	 /*Enable Motor_1*/
-	 PWMGenEnable(M1PWM,Generator_3, PWM6);
+	 PWMGenEnable(M1PWM,PWM4);	
+	 /*Enable Motor_2*/
+	 PWMGenEnable(M1PWM,PWM5);	
+	 /*Enable Motor_3*/
+	 PWMGenEnable(M1PWM,PWM6);
+	 /*Enable Motor_4*/
+	 PWMGenEnable(M1PWM,PWM7);	 
 
 #endif
 }
@@ -90,8 +127,14 @@ void Motor_Stop(void)
 {
 #if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
 
-	/*Disable Motor_1*/
-  PWMGenDisable(M1PWM,Generator_3, PWM6);
+  /*Disable Motor_1*/
+  PWMGenDisable(M1PWM,PWM4);
+  /*Disable Motor_2*/
+  PWMGenDisable(M1PWM,PWM5);
+  /*Disable Motor_3*/
+  PWMGenDisable(M1PWM,PWM6);
+  /*Disable Motor_4*/
+  PWMGenDisable(M1PWM,PWM7);
 
 #endif
 }
@@ -128,19 +171,30 @@ void Motor_SetSpeed(Motor_Speed_t speed)
 #if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
 
 	if (speed == MOTOR_SPEED_LOW)
-	{
+	{	
+		PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,25);
+		PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,25);
 		PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,25);
+		PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,25);
+		
 	}
 	else if (speed == MOTOR_SPEED_MID)
-  {
-	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,50);
+    {
+	 
+	 	PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,50);
+		PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,50);
+		PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,50);
+		PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,50);
 	}
 	else if (speed == MOTOR_SPEED_HIGH)
-  {
+    {
+		PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,75);
+		PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,75);
 		PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,75);
+		PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,75);
 	}
 	else
-  {/*Do no thing*/}	
-
+    {/*Do no thing*/}	
+	
 #endif	  
 }
