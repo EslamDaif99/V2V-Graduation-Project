@@ -1,12 +1,18 @@
+#include "config.h"
 #include "Motor.h"
 #include "GPIO.h"
 #include "Port.h"
 #include "Type.h"
 #include "PWM.h"
 
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
+#endif
 
 void Motor_Init(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	/***********Motor_1**************/
 
 	 PWMClockSet(M1PWM,PWM6);	
@@ -14,16 +20,13 @@ void Motor_Init(void)
 	 PWMPinConfigure(M1PWM,PWM6); 
 	
     	
-	 
-#if 1
 	
 	 PWMGenDisable(M1PWM,Generator_3,PWM6);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                             
 	 PWMGenPeriodSet(M1PWM,Generator_3,PWM_SYSCLK_DIV_64,50);   
 	 PWMDutyCycleSet(M1PWM,PWM3,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,Generator_3, PWM6);
-	
-#endif
+
 	
 	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
 	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
@@ -62,28 +65,41 @@ void Motor_Init(void)
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
 //	Motor_Start();
   Motor_GoForward();
+
+#endif
 }
 
 void Motor_Update(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
 
-
+#endif
 }
 
 void Motor_Start(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	 /*Enable Motor_1*/
 	 PWMGenEnable(M1PWM,Generator_3, PWM6);
+
+#endif
 }
 
 void Motor_Stop(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	/*Disable Motor_1*/
   PWMGenDisable(M1PWM,Generator_3, PWM6);
+
+#endif
 }
 
 void Motor_GoForward(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
     /************Motor_1********/
 	
 	GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_STATE_HIGH);
@@ -103,10 +119,14 @@ void Motor_GoForward(void)
 
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_HIGH);
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
+
+#endif
 }
 
 void Motor_SetSpeed(Motor_Speed_t speed)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	if (speed == MOTOR_SPEED_LOW)
 	{
 		PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,25);
@@ -121,5 +141,6 @@ void Motor_SetSpeed(Motor_Speed_t speed)
 	}
 	else
   {/*Do no thing*/}	
-	  
+
+#endif	  
 }

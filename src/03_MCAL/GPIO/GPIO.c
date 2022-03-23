@@ -1,10 +1,17 @@
+#include "config.h"
 #include "Type.h"
 #include "BITMATH.h"
 #include "GPIO.h"
 #include "tm4c123gh6pm.h"
 
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
+
+#endif
+
 void GPIO_Init(GPIO_PORT_t port,GPIO_PIN_t pin)
 {
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	uint32_t delay;
 
 	if(port == GPIO_PORTA)
@@ -100,11 +107,14 @@ void GPIO_Init(GPIO_PORT_t port,GPIO_PIN_t pin)
 	else
 		{ /*Do nothing*/
 		}
+
+#endif
 }
 
 
 void GPIO_SetPinDirection(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_Direction_t direction)
 {
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
 
 	if (port == GPIO_PORTA)
 		{
@@ -241,10 +251,14 @@ void GPIO_SetPinDirection(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_Direction_t direc
 	else
 		{ /*Do nothing*/
 		}
+
+#endif
 }
 
 void GPIO_SetPinState(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_State_t state)
 {
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	if (port == GPIO_PORTA)
 		{
 			switch(state)
@@ -302,10 +316,14 @@ void GPIO_SetPinState(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_State_t state)
 	else
 		{ /*Do nothing*/
 		}
+
+#endif
 }
 
 GPIO_State_t GPIO_GetPinState(GPIO_PORT_t port,GPIO_PIN_t pin)
 	{
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
+
 		uint08_t ReadPinValue = 0;
 
 		if(port == GPIO_PORTA)
@@ -343,10 +361,14 @@ GPIO_State_t GPIO_GetPinState(GPIO_PORT_t port,GPIO_PIN_t pin)
 			   /*DO NOTHING*/
 				return ReadPinValue;
 		   }
+
+#endif
 }
 
 void GPIO_SetPortDirection(GPIO_PORT_t port,GPIO_Direction_t direction)
 {
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	if(port == GPIO_PORTA)
 		{
 			switch(direction)
@@ -482,10 +504,14 @@ void GPIO_SetPortDirection(GPIO_PORT_t port,GPIO_Direction_t direction)
 	else
 		{ /*Do nothing*/
 		}
+
+#endif
 }
 
 void GPIO_SetPortState(GPIO_PORT_t port,uint08_t state)
 {
+#if (GPIO_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	if (port == GPIO_PORTA)
 	{
 		switch (state)
@@ -541,4 +567,5 @@ void GPIO_SetPortState(GPIO_PORT_t port,uint08_t state)
 		}
 	}
 
+#endif
 }

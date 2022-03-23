@@ -1,3 +1,4 @@
+#include "config.h"
 #include "Type.h"
 #include "SysTick.h"
 #include "GPIO.h"
@@ -6,6 +7,8 @@
 #include "UART.h"
 #include "Port.h"
 #include "OS.h"
+
+#if (OS_SWC_STATUS == SWC_STATUS_ENABLE)
 
 #define OS_MAX_TASK_COUNT					(0x0A)
 #define OS_TICK_MS							(0x01)
@@ -26,8 +29,12 @@ OS_Task_t;
 static OS_Task_t OS_TaskList[OS_MAX_TASK_COUNT];
 static uint08_t OS_Tick;
 
+#endif
+
 void OS_Init(void)
 {
+#if (OS_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	uint32_t index;
 
 	/* ************* Initialize OS Data ************* */
@@ -71,10 +78,14 @@ void OS_Init(void)
 	UART_Init();
 
 	SysTick_Init();
+
+#endif
 }
 
 void OS_Update(void)
 {
+#if (OS_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	uint32_t index = 0;
 
 	if(OS_Tick > 0)
@@ -108,9 +119,14 @@ void OS_Update(void)
 		/* Do Nothing */
 	}
 
+#endif
 }
 
 void OS_IncreamentTick(void)
 {
+#if (OS_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	OS_Tick++;
+
+#endif
 }
