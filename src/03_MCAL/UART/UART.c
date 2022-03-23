@@ -8,24 +8,24 @@ void UART_Init(void)
 	uint32_t delay;
     /* Baudrate 115200 , Stop 1 , No Paritiy , 8 Bits Data */
 	/*clk of UART0*/
-	SET_BIT(SYSCTL_RCGCUART_R,0)
+	SET_BIT(SYSCTL_RCGCUART_R,1);
 	/*clk of Port A*/
-	SET_BIT(SYSCTL_RCGCGPIO_R,0);
+	SET_BIT(SYSCTL_RCGCGPIO_R,1);
 	/*Wait to ensure that clock had been enabled*/
-    delay = 1;
+    (void)(delay = 1);
 	/*Enable alternative functions For PINA0 & PINA1*/
-    SET_BIT(GPIO_PORTA_AFSEL_R,0);
-    SET_BIT(GPIO_PORTA_AFSEL_R,1);
+    SET_BIT(GPIO_PORTB_AFSEL_R,0);
+    SET_BIT(GPIO_PORTB_AFSEL_R,1);
     /*Choose PINA0 & PINA1 as UART */
-    GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFFFFF00)+0x00000011;
+    GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00)+0x00000011;
 	/*Disable Analog Mode*/
-	GPIO_PORTA_AMSEL_R = 0x00;
+	GPIO_PORTB_AMSEL_R = 0x00;
 	/*PINA0 input and enabled*/
-	CLR_BIT(GPIO_PORTA_DIR_R,0);
-	SET_BIT(GPIO_PORTA_DEN_R,0);
+	CLR_BIT(GPIO_PORTB_DIR_R,0);
+	SET_BIT(GPIO_PORTB_DEN_R,0);
 	/*PINA1 output and enabled*/
-	SET_BIT(GPIO_PORTA_DIR_R,1);
-	SET_BIT(GPIO_PORTA_DEN_R,1);
+	SET_BIT(GPIO_PORTB_DIR_R,1);
+	SET_BIT(GPIO_PORTB_DEN_R,1);
 	/*Disable UART*/
 	CLR_BIT(UART0_CTL_R,0);
 	/*Baud rate*/
@@ -34,8 +34,8 @@ void UART_Init(void)
 	/*1 STOP bit*/
 	CLR_BIT(UART0_LCRH_R,3);
 	/*8 bit data*/
-	SET_BIT(GPIO_PORTA_AFSEL_R,5);
-	SET_BIT(GPIO_PORTA_AFSEL_R,6);
+	SET_BIT(UART0_LCRH_R,5);
+	SET_BIT(UART0_LCRH_R,6);
 	/*Enable UART*/
 	SET_BIT(UART0_CTL_R,0);
 
