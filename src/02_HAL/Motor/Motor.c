@@ -1,12 +1,18 @@
+#include "config.h"
 #include "Motor.h"
 #include "GPIO.h"
 #include "Port.h"
 #include "Type.h"
 #include "PWM.h"
 
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
+#endif
 
 void Motor_Init(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	/*****PWM_MOTOR_1****PORTF***PIN0*****/
 	 PWMClockSet(M1PWM,PWM4);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
@@ -90,16 +96,21 @@ void Motor_Init(void)
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
 //	Motor_Start();
   Motor_GoForward();
+
+#endif
 }
 
 void Motor_Update(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
 
-
+#endif
 }
 
 void Motor_Start(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	 /*Enable Motor_1*/
 	 PWMGenEnable(M1PWM,PWM4);	
 	 /*Enable Motor_2*/
@@ -108,10 +119,14 @@ void Motor_Start(void)
 	 PWMGenEnable(M1PWM,PWM6);
 	 /*Enable Motor_4*/
 	 PWMGenEnable(M1PWM,PWM7);	 
+
+#endif
 }
 
 void Motor_Stop(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
   /*Disable Motor_1*/
   PWMGenDisable(M1PWM,PWM4);
   /*Disable Motor_2*/
@@ -120,10 +135,14 @@ void Motor_Stop(void)
   PWMGenDisable(M1PWM,PWM6);
   /*Disable Motor_4*/
   PWMGenDisable(M1PWM,PWM7);
+
+#endif
 }
 
 void Motor_GoForward(void)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
     /************Motor_1********/
 	
 	GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_STATE_HIGH);
@@ -143,10 +162,14 @@ void Motor_GoForward(void)
 
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_HIGH);
 //	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
+
+#endif
 }
 
 void Motor_SetSpeed(Motor_Speed_t speed)
 {
+#if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	if (speed == MOTOR_SPEED_LOW)
 	{	
 		PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,25);
@@ -172,5 +195,6 @@ void Motor_SetSpeed(Motor_Speed_t speed)
 	}
 	else
     {/*Do no thing*/}	
-	  
+	
+#endif	  
 }

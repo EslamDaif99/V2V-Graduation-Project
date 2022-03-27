@@ -1,14 +1,20 @@
+#include "config.h"
 #include "Type.h"
 #include "BITMATH.h"
 #include "GPIO.h"
 #include "tm4c123gh6pm.h"
 #include "PWM.h"
 
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
 
 uint32_t Load ;
 
+#endif
+
 void PWMClockSet (PWM_Module module,PWM_Number number)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
     SET_BIT(SYSCTL_RCGCPWM_R,module);      /*Enable and provide a clock to PWM module  in Run mode*/
 		switch(module)
 		{
@@ -82,19 +88,24 @@ void PWMClockSet (PWM_Module module,PWM_Number number)
 					
 			default: break;
 		}
+
+#endif
 }
 
 void PWMDiv(PWM_SYSCLK_DIV div)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
     SET_BIT(SYSCTL_RCC_R,20);              /* Enable System Clock Divisor function  */
     SYSCTL_RCC_R|=(div<<17);
     
-    
+#endif  
 }
 
 void PWMPinConfigure(PWM_Module module,PWM_Number number)
 {
-	
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
     switch(module)
     {
         case M0PWM:
@@ -316,12 +327,14 @@ void PWMPinConfigure(PWM_Module module,PWM_Number number)
 
     }
 
-
+#endif
 }
 
 
 void PWMGenDisable(PWM_Module module,PWM_Number number)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
     switch(module)
     {
         case M0PWM:
@@ -369,12 +382,12 @@ void PWMGenDisable(PWM_Module module,PWM_Number number)
             /*Do Nothing */    break;
     }
 
-  
-
+#endif
 }
 
 void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
 
   switch(module)
   { 
@@ -717,11 +730,13 @@ void PWMGenConfigure (PWM_Module module, PWM_Mode mode, PWM_Number number)
 
   }
 
-
+#endif
 }
 
 void PWMGenPeriodSet(PWM_Module module, PWM_Number number, PWM_SYSCLK_DIV div, uint32_t Clock_Required)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
         uint32_t System_Clock=0;
         switch(div)
         {   
@@ -802,12 +817,14 @@ void PWMGenPeriodSet(PWM_Module module, PWM_Number number, PWM_SYSCLK_DIV div, u
                 /*Do Nothing */break;
         }
 
-         
+#endif      
 }
 
 
 void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32_t duty_cycle)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
    /*	Load =System_Clock/Clock_Required;  */ 
    /*Load Value passed to  "PWMPulseWidthSet" function */
 	      /*Load Value passed to  "PWMPulseWidthSet" function */
@@ -1083,15 +1100,13 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
 
                         case Count_DOWN:
 
-                        PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
-
-                        #if 0
+                        
                             //PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             
                             y = (((100-50)*0.01)*5000);
                             PWM1_3_CMPA_R =y-1;
 
-                        #endif
+                        
                         
                             break;
 
@@ -1129,11 +1144,13 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
 
   }
 
+#endif
 }
 
 
 void PWMGenEnable(PWM_Module module,PWM_Number number)
 {
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
 
     switch(module)
     {
@@ -1204,6 +1221,5 @@ void PWMGenEnable(PWM_Module module,PWM_Number number)
             /*Do Nothing */  break; 
     }
 
-  
-
+#endif
 }
