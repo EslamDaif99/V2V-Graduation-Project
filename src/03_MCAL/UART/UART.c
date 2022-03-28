@@ -9,21 +9,21 @@ void UART_Init(void)
     /* Baudrate 115200 , Stop 1 , No Paritiy , 8 Bits Data */
 	/*clk of UART0*/
 	SET_BIT(SYSCTL_RCGCUART_R,1);
-	/*clk of Port A*/
+	/*clk of Port B*/
 	SET_BIT(SYSCTL_RCGCGPIO_R,1);
 	/*Wait to ensure that clock had been enabled*/
     (void)(delay = 1);
-	/*Enable alternative functions For PINA0 & PINA1*/
+	/*Enable alternative functions For PINB0 & PINB1*/
     SET_BIT(GPIO_PORTB_AFSEL_R,0);
     SET_BIT(GPIO_PORTB_AFSEL_R,1);
-    /*Choose PINA0 & PINA1 as UART */
+    /*Choose PINB0 & PINB1 as UART */
     GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00)+0x00000011;
 	/*Disable Analog Mode*/
 	GPIO_PORTB_AMSEL_R = 0x00;
-	/*PINA0 input and enabled*/
+	/*PINB0 input and enabled*/
 	CLR_BIT(GPIO_PORTB_DIR_R,0);
 	SET_BIT(GPIO_PORTB_DEN_R,0);
-	/*PINA1 output and enabled*/
+	/*PINB1 output and enabled*/
 	SET_BIT(GPIO_PORTB_DIR_R,1);
 	SET_BIT(GPIO_PORTB_DEN_R,1);
 	/*Disable UART*/
@@ -33,11 +33,13 @@ void UART_Init(void)
 	UART1_FBRD_R =44;    //.6805*64+.5=44.05
 	/*1 STOP bit*/
 	CLR_BIT(UART1_LCRH_R,3);
+	/*FIFO enable*/
+	SET_BIT(UART1_LCRH_R,4);
 	/*8 bit data*/
 	SET_BIT(UART1_LCRH_R,5);
 	SET_BIT(UART1_LCRH_R,6);
-	/*Enable UART*/
-	SET_BIT(UART1_CTL_R,0);
+	/*Enable TXE & RXE & UART*/
+	UART1_CTL_R = 0x0301;
 
 }
 
