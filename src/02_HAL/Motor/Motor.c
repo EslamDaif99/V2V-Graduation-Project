@@ -12,7 +12,6 @@
 void Motor_Init(void)
 {
 #if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
-
 	/*****PWM_MOTOR_1****PORTF***PIN0*****/
 	 PWMClockSet(M1PWM,PWM4);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
