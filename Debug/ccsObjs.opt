@@ -1,0 +1,1 @@
+"./main.obj" "./tm4c123gh6pm_startup_ccs.obj" "./01_Service/OS/OS.obj" "./02_HAL/LED/LED.obj" "./02_HAL/Motor/Motor.obj" "./03_MCAL/GPIO/GPIO.obj" "./03_MCAL/SysTick/SysTick.obj" "./03_MCAL/UART/UART.obj" "./04_Drivers/PWM/PWM.obj" "../tm4c123gh6pm.cmd" -llibc.a 
