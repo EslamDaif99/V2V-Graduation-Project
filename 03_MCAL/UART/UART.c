@@ -67,7 +67,7 @@ uint08_t UART_Rx(uint08_t * bytePtr)
     uint08_t retVal = UART_RX_UNAVAILABLE;
 
 	/*Check for RXFE*/
-    if(GET_BIT(UART1_FR_R,4)== 1)
+    if(GET_BIT(UART1_FR_R,4)== 0)
     {
         * bytePtr = UART1_DR_R;
          retVal = UART_RX_AVAILABLE;
@@ -82,6 +82,8 @@ uint08_t UART_Rx(uint08_t * bytePtr)
 
 void UART_Update(void)
 {
-    /* Send 'A' Every 1 Second */
-    UART_Tx('A');
+    uint08_t data = 'A';
+    /* Send 'A' Every 1 Second or Received Data */
+    UART_Rx(&data);
+    UART_Tx(data);
 }

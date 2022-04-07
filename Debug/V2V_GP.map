@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.5                     
 ******************************************************************************
->> Linked Thu Apr  7 17:45:20 2022
+>> Linked Thu Apr  7 17:58:17 2022
 
 OUTPUT FILE NAME:   <V2V_GP.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000144d
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001459
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  000014d0  0003eb30  R  X
+  FLASH                 00000000   00040000  000014dc  0003eb24  R  X
   SRAM                  20000000   00008000  000002f2  00007d0e  RW X
 
 
@@ -19,10 +19,10 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000014d4   000014d4    r-x
+00000000    00000000    000014dc   000014dc    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00001250   00001250    r-x .text
-  000014c0    000014c0    00000014   00000014    r-- .cinit
+  0000026c    0000026c    0000125c   0000125c    r-x .text
+  000014c8    000014c8    00000014   00000014    r-- .cinit
 20000000    20000000    000002f2   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
   20000200    20000200    000000f2   00000000    rw- .bss
@@ -36,27 +36,27 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00001250     
+.text      0    0000026c    0000125c     
                   0000026c    00000b28     GPIO.obj (.text)
                   00000d94    00000276     Motor.obj (.text)
                   0000100a    00000002     --HOLE-- [fill = 0]
                   0000100c    00000178     OS.obj (.text)
-                  00001184    00000150     UART.obj (.text)
-                  000012d4    0000008c     PWM.obj (.text)
-                  00001360    00000064     LED.obj (.text)
-                  000013c4    00000044     SysTick.obj (.text)
-                  00001408    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  0000144c    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  00001480    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  0000149c    0000000c     main.obj (.text)
-                  000014a8    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  000014b4    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  000014b8    00000004                                   : exit.c.obj (.text:abort:abort)
+                  00001184    0000015c     UART.obj (.text)
+                  000012e0    0000008c     PWM.obj (.text)
+                  0000136c    00000064     LED.obj (.text)
+                  000013d0    00000044     SysTick.obj (.text)
+                  00001414    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00001458    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  0000148c    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  000014a8    0000000c     main.obj (.text)
+                  000014b4    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000014c0    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  000014c4    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    000014c0    00000014     
-                  000014c0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  000014c8    00000004     (__TI_handler_table)
-                  000014cc    00000008     (__TI_cinit_table)
+.cinit     0    000014c8    00000014     
+                  000014c8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000014d0    00000004     (__TI_handler_table)
+                  000014d4    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -109,9 +109,9 @@ MODULE SUMMARY
        Total:                         68     0         0      
                                                               
     .\03_MCAL\UART\
-       UART.obj                       336    0         0      
+       UART.obj                       348    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         336    0         0      
+       Total:                         348    0         0      
                                                               
     .\04_Drivers\PWM\
        PWM.obj                        140    0         0      
@@ -130,18 +130,18 @@ MODULE SUMMARY
        Stack:                         0      0         512    
        Linker Generated:              0      20        0      
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   4686   640       754    
+       Grand Total:                   4698   640       754    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000014cc records: 1, size/record: 8, table size: 8
-	.bss: load addr=000014c0, load size=00000008 bytes, run addr=20000200, run size=000000f2 bytes, compression=zero_init
+__TI_cinit_table @ 000014d4 records: 1, size/record: 8, table size: 8
+	.bss: load addr=000014c8, load size=00000008 bytes, run addr=20000200, run size=000000f2 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000014c8 records: 1, size/record: 4, table size: 4
+__TI_handler_table @ 000014d0 records: 1, size/record: 4, table size: 4
 	index: 0, handler: __TI_zero_init
 
 
@@ -149,15 +149,15 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                          
 -------   ----                          
-000014b9  C$$EXIT                       
+000014c5  C$$EXIT                       
 0000094d  GPIO_GetPinState              
 0000026d  GPIO_Init                     
 00000465  GPIO_SetPinDirection          
 000007b1  GPIO_SetPinState              
 00000a4d  GPIO_SetPortDirection         
 00000c05  GPIO_SetPortState             
-00001361  LED_Init                      
-00001387  LED_Update                    
+0000136d  LED_Init                      
+00001393  LED_Update                    
 00000f3f  Motor_GoForward               
 00000d95  Motor_Init                    
 00000f57  Motor_SetSpeed                
@@ -167,18 +167,18 @@ address   name
 0000115f  OS_IncreamentTick             
 0000100d  OS_Init                       
 000010db  OS_Update                     
-000012d5  PWMClockSet                   
-000012e5  PWMDiv                        
-0000133b  PWMDutyCycleSet               
-00001311  PWMGenConfigure               
-00001301  PWMGenDisable                 
-00001351  PWMGenEnable                  
-00001325  PWMGenPeriodSet               
-000012f1  PWMPinConfigure               
-000014a9  ResetISR                      
-000013eb  SysTick_Handler               
-000013c9  SysTick_Init                  
-000013f3  SysTick_Update                
+000012e1  PWMClockSet                   
+000012f1  PWMDiv                        
+00001347  PWMDutyCycleSet               
+0000131d  PWMGenConfigure               
+0000130d  PWMGenDisable                 
+0000135d  PWMGenEnable                  
+00001331  PWMGenPeriodSet               
+000012fd  PWMPinConfigure               
+000014b5  ResetISR                      
+000013f7  SysTick_Handler               
+000013d5  SysTick_Init                  
+000013ff  SysTick_Update                
 00001185  UART_Init                     
 00001269  UART_Rx                       
 0000123b  UART_Tx                       
@@ -186,29 +186,29 @@ address   name
 20000200  __STACK_END                   
 00000200  __STACK_SIZE                  
 20000200  __STACK_TOP                   
-000014cc  __TI_CINIT_Base               
-000014d4  __TI_CINIT_Limit              
-000014c8  __TI_Handler_Table_Base       
-000014cc  __TI_Handler_Table_Limit      
-00001409  __TI_auto_init_nobinit_nopinit
+000014d4  __TI_CINIT_Base               
+000014dc  __TI_CINIT_Limit              
+000014d0  __TI_Handler_Table_Base       
+000014d4  __TI_Handler_Table_Limit      
+00001415  __TI_auto_init_nobinit_nopinit
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
 00000000  __TI_static_base__            
-00001481  __TI_zero_init_nomemset       
+0000148d  __TI_zero_init_nomemset       
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
 UNDEFED   __mpu_init                    
 20000000  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
-0000144d  _c_int00_noargs               
+00001459  _c_int00_noargs               
 UNDEFED   _system_post_cinit            
-000014b5  _system_pre_init              
-000014b9  abort                         
+000014c1  _system_pre_init              
+000014c5  abort                         
 ffffffff  binit                         
 00000000  g_pfnVectors                  
-0000149d  main                          
+000014a9  main                          
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -237,31 +237,31 @@ address   name
 0000123b  UART_Tx                       
 00001269  UART_Rx                       
 00001295  UART_Update                   
-000012d5  PWMClockSet                   
-000012e5  PWMDiv                        
-000012f1  PWMPinConfigure               
-00001301  PWMGenDisable                 
-00001311  PWMGenConfigure               
-00001325  PWMGenPeriodSet               
-0000133b  PWMDutyCycleSet               
-00001351  PWMGenEnable                  
-00001361  LED_Init                      
-00001387  LED_Update                    
-000013c9  SysTick_Init                  
-000013eb  SysTick_Handler               
-000013f3  SysTick_Update                
-00001409  __TI_auto_init_nobinit_nopinit
-0000144d  _c_int00_noargs               
-00001481  __TI_zero_init_nomemset       
-0000149d  main                          
-000014a9  ResetISR                      
-000014b5  _system_pre_init              
-000014b9  C$$EXIT                       
-000014b9  abort                         
-000014c8  __TI_Handler_Table_Base       
-000014cc  __TI_CINIT_Base               
-000014cc  __TI_Handler_Table_Limit      
-000014d4  __TI_CINIT_Limit              
+000012e1  PWMClockSet                   
+000012f1  PWMDiv                        
+000012fd  PWMPinConfigure               
+0000130d  PWMGenDisable                 
+0000131d  PWMGenConfigure               
+00001331  PWMGenPeriodSet               
+00001347  PWMDutyCycleSet               
+0000135d  PWMGenEnable                  
+0000136d  LED_Init                      
+00001393  LED_Update                    
+000013d5  SysTick_Init                  
+000013f7  SysTick_Handler               
+000013ff  SysTick_Update                
+00001415  __TI_auto_init_nobinit_nopinit
+00001459  _c_int00_noargs               
+0000148d  __TI_zero_init_nomemset       
+000014a9  main                          
+000014b5  ResetISR                      
+000014c1  _system_pre_init              
+000014c5  C$$EXIT                       
+000014c5  abort                         
+000014d0  __TI_Handler_Table_Base       
+000014d4  __TI_CINIT_Base               
+000014d4  __TI_Handler_Table_Limit      
+000014dc  __TI_CINIT_Limit              
 20000000  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
