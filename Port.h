@@ -44,9 +44,8 @@
 #define MOTOR_4_IN1        (GPIO_PIN_4)
 #define MOTOR_4_IN2        (GPIO_PIN_5)
 
-
-
-
-
+/***************UART ***************/
+/* UART_RX_PIN          PB0 */
+/* UART_TX_PIN          PB1 */
 
 #endif
