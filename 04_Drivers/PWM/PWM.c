@@ -828,9 +828,9 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
    /*	Load =System_Clock/Clock_Required;  */ 
    /*Load Value passed to  "PWMPulseWidthSet" function */
 	      /*Load Value passed to  "PWMPulseWidthSet" function */
-    Load =5000;
+    //Load =5000;
   
-    uint32_t y =0;
+    //uint32_t y =0;
     switch(module)
     { 
       case M0PWM:
@@ -842,11 +842,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_0_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM0_0_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_0_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_0_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -859,11 +859,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_0_CMPB_R=((duty_cycle/100)*Load)-1;                            
+                            PWM0_0_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_0_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_0_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -877,11 +877,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_1_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM0_1_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_1_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_1_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -894,11 +894,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_1_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM0_1_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_1_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_1_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -911,11 +911,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_2_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM0_2_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_2_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_2_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -928,11 +928,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_2_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM0_2_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_2_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_2_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -945,11 +945,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_3_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM0_3_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_3_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -962,11 +962,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM0_3_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM0_3_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM0_3_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM0_3_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
 
@@ -988,11 +988,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_0_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM1_0_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_0_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM1_0_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -1005,11 +1005,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_0_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM1_0_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_0_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM1_0_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -1023,11 +1023,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_1_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM1_1_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_1_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM1_1_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -1040,11 +1040,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_1_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM1_1_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            PWM1_1_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
+                            PWM1_1_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -1057,13 +1057,11 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_2_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM1_2_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                           // PWM1_2_CMPA_R=(((100-duty_cycle)/100)*Load)-1;
-                            y = (((100-50)*0.01)*5000);
-                            PWM1_2_CMPA_R=y-1;
+                            PWM1_2_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             break;
 
                         default:
@@ -1076,13 +1074,12 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_2_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM1_2_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            //PWM1_2_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
-                            y = (((100-50)*0.01)*5000);
-                            PWM1_2_CMPB_R =y-1;
+                            PWM1_2_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
+
                             break;
 
                         default:
@@ -1095,20 +1092,14 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_3_CMPA_R=((duty_cycle/100)*Load)-1;
+                            PWM1_3_CMPA_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
 
-                        PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
-
-                        #if 0
-                            //PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
+                        
+                            PWM1_3_CMPA_R=(((100-duty_cycle)*0.01)*Load)-1;
                             
-                            y = (((100-50)*0.01)*5000);
-                            PWM1_3_CMPA_R =y-1;
-
-                        #endif
                         
                             break;
 
@@ -1122,13 +1113,12 @@ void PWMDutyCycleSet(PWM_Module module, PWM_Number number, PWM_Mode mode, uint32
                     switch(mode)
                     {
                         case Count_UP:
-                            PWM1_3_CMPB_R=((duty_cycle/100)*Load)-1;
+                            PWM1_3_CMPB_R=((duty_cycle*0.01)*Load)-1;
                             break;
 
                         case Count_DOWN:
-                            //PWM1_3_CMPB_R=(((100-duty_cycle)/100)*Load)-1;
-                            y = (((100-50)*0.01)*5000);
-                            PWM1_3_CMPB_R=y-1;
+                            PWM1_3_CMPB_R=(((100-duty_cycle)*0.01)*Load)-1;
+
                             break;
 
                         default:

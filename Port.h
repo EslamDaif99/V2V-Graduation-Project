@@ -1,9 +1,20 @@
 #ifndef _PORT_H_
 #define _PORT_H_
+#include "config.h"
+
+/* ***************** This is a Temp Solution ***************** */
+
+#if (PWM_SWC_STATUS == SWC_STATUS_ENABLE)
+
+#define LED_PORT           (GPIO_PORTA)
+#define LED_PIN_NUMBER     (GPIO_PIN_4)
+
+#else
 
 #define LED_PORT           (GPIO_PORTF)
 #define LED_PIN_NUMBER     (GPIO_PIN_3)
 
+#endif
 
 
 #define MOTOR_1_PORT       (GPIO_PORTA)
