@@ -12,6 +12,7 @@
 void Motor_Init(void)
 {
 #if (MOTOR_SWC_STATUS == SWC_STATUS_ENABLE)
+
 	/*****PWM_MOTOR_1****PORTF***PIN0*****/
 	 PWMClockSet(M1PWM,PWM4);	
 	 PWMDiv(PWM_SYSCLK_DIV_64);
@@ -19,7 +20,7 @@ void Motor_Init(void)
 	 PWMGenDisable(M1PWM,PWM4);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM4);                                           
 	 PWMGenPeriodSet(M1PWM,PWM4,PWM_SYSCLK_DIV_64,50); 	   
-	 PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,50);
+	 PWMDutyCycleSet(M1PWM,PWM4,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,PWM4);
 
 
@@ -30,7 +31,7 @@ void Motor_Init(void)
 	 PWMGenDisable(M1PWM,PWM5);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM5);                                            
 	 PWMGenPeriodSet(M1PWM,PWM5,PWM_SYSCLK_DIV_64,50); 	   
-	 PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,50);
+	 PWMDutyCycleSet(M1PWM,PWM5,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,PWM5);
 
 	/*****PWM_Motor_3***PORTF***PIN2*******/
@@ -41,7 +42,7 @@ void Motor_Init(void)
 	 PWMGenDisable(M1PWM,PWM6);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM6);                                           
 	 PWMGenPeriodSet(M1PWM,PWM6,PWM_SYSCLK_DIV_64,50); 	   
-	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,50);
+	 PWMDutyCycleSet(M1PWM,PWM6,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,PWM6);
 	
 
@@ -52,7 +53,7 @@ void Motor_Init(void)
 	 PWMGenDisable(M1PWM,PWM7);                                                                    
 	 PWMGenConfigure(M1PWM,Count_DOWN, PWM7);                                          
 	 PWMGenPeriodSet(M1PWM,PWM7,PWM_SYSCLK_DIV_64,50); 	   
-	 PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,50);
+	 PWMDutyCycleSet(M1PWM,PWM7,Count_DOWN,75);
 	 PWMGenEnable(M1PWM,PWM7);
 
 
@@ -68,31 +69,37 @@ void Motor_Init(void)
 	 GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_STATE_LOW);
 	
 	/************Motor_2********/
-	//GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_ENABLE,GPIO_DIRECTION_OUTPUT);
-//  GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_DIRECTION_OUTPUT);
-//	GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_DIRECTION_OUTPUT);
-//	
-//	//GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_ENABLE,GPIO_STATE_LOW);
-//	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_STATE_LOW);
-//	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_STATE_LOW);
 
-//	/************Motor_3********/
-//	//GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_ENABLE,GPIO_DIRECTION_OUTPUT);
-//    GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_DIRECTION_OUTPUT);
-//	GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_DIRECTION_OUTPUT);
-//	
-//	//GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_ENABLE,GPIO_STATE_LOW);
-//	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_STATE_LOW);
-//	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_STATE_LOW);
+	GPIO_Init(MOTOR_2_PORT,MOTOR_2_IN1);
+	GPIO_Init(MOTOR_2_PORT,MOTOR_2_IN2);
+    GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_DIRECTION_OUTPUT);
+	GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_DIRECTION_OUTPUT);
 
-//	/************Motor_4********/
-//	//GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_ENABLE,GPIO_DIRECTION_OUTPUT);
-//    GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_DIRECTION_OUTPUT);
-//	GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_DIRECTION_OUTPUT);
-//	
-//	//GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_ENABLE,GPIO_STATE_LOW);
-//	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_LOW);
-//	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
+
+	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_STATE_LOW);
+	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_STATE_LOW);
+
+	/************Motor_3********/
+
+    GPIO_Init(MOTOR_3_PORT,MOTOR_3_IN1);
+    GPIO_Init(MOTOR_3_PORT,MOTOR_3_IN2);
+    GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_DIRECTION_OUTPUT);
+	GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_DIRECTION_OUTPUT);
+
+
+	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_STATE_LOW);
+	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_STATE_LOW);
+
+	/************Motor_4********/
+
+    GPIO_Init(MOTOR_4_PORT,MOTOR_4_IN1);
+    GPIO_Init(MOTOR_4_PORT,MOTOR_4_IN2);
+    GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_DIRECTION_OUTPUT);
+	GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_DIRECTION_OUTPUT);
+
+
+	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_LOW);
+	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
 //	Motor_Start();
   Motor_GoForward();
 
@@ -147,20 +154,20 @@ void Motor_GoForward(void)
 	GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_STATE_HIGH);
 	GPIO_SetPinState(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_STATE_LOW);
 	
-//	/************Motor_2********/
+	/************Motor_2********/
 
-//	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_STATE_HIGH);
-//	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_STATE_LOW);
-//	
-//	/************Motor_3********/
+	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_STATE_HIGH);
+	GPIO_SetPinState(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_STATE_LOW);
 
-//	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_STATE_HIGH);
-//	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_STATE_LOW);
-//	
-//	/************Motor_4********/
+	/************Motor_3********/
 
-//	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_HIGH);
-//	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
+	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_STATE_HIGH);
+	GPIO_SetPinState(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_STATE_LOW);
+
+	/************Motor_4********/
+
+	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_STATE_HIGH);
+	GPIO_SetPinState(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_STATE_LOW);
 
 #endif
 }
