@@ -3,14 +3,7 @@
 
 typedef enum
 {
-  PORT_HIGH =0xFF,
-  PORT_LOW= 0x00,
-
-}STATE;
-
-typedef enum
-{
-	/* List the gpio ports */
+	/* List the GPIO Ports */
 	GPIO_PORTA,
 	GPIO_PORTB,
 	GPIO_PORTC,
@@ -22,7 +15,7 @@ typedef enum
 
 typedef enum
 {
-	/* List the gpio pins */
+	/* List the GPIO Pins */
 	GPIO_PIN_0,
 	GPIO_PIN_1,
 	GPIO_PIN_2,
@@ -37,6 +30,7 @@ typedef enum
 typedef enum
 {
 	GPIO_DIRECTION_INPUT_PUSH_PULL,
+	GPIO_DIRECTION_INPUT_PULL_DOWN,
 	GPIO_DIRECTION_INPUT_FLOAT,
 	GPIO_DIRECTION_OUTPUT
 
@@ -44,19 +38,22 @@ typedef enum
 
 typedef enum
 {
-	/* List the gpio pins */
 	GPIO_STATE_LOW,
 	GPIO_STATE_HIGH,
 
 }GPIO_State_t;
 
+#define PORT_HIGH 0xff
+#define PORT_LOW  0x00
 
-
-void GPIO_Init(GPIO_PORT_t port,GPIO_PIN_t pin);
+/*Initialization*/
+void GPIO_Init(GPIO_PORT_t port);
+/*For Pins*/
 void GPIO_SetPinDirection(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_Direction_t direction);
 void GPIO_SetPinState(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_State_t state);
 GPIO_State_t GPIO_GetPinState(GPIO_PORT_t port,GPIO_PIN_t pin);
+/*For Ports*/
 void GPIO_SetPortDirection(GPIO_PORT_t port,GPIO_Direction_t direction);
-void GPIO_SetPortState(GPIO_PORT_t port,STATE state);
+void GPIO_SetPortState(GPIO_PORT_t port,uint08_t state);
 
 #endif
