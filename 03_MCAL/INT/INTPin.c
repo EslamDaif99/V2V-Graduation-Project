@@ -12,7 +12,7 @@ void SpeedPinConfig(void(*func)(void))
 {
 	handler=func;
 	/*Initiate PIN0 in PORTD*/
-	GPIO_Init(GPIO_PORTD);
+	GPIO_Init(GPIO_PORTD,GPIO_PIN_0);
 	GPIO_SetPinDirection(GPIO_PORTD,GPIO_PIN_0,GPIO_DIRECTION_INPUT_PULL_DOWN);
 
     /*Mask Pin */
