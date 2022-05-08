@@ -42,7 +42,7 @@ void DisableSpeedInt(void)
 	CLR_BIT(NVIC_EN0_R,3);
 }
 
-void GPIOPortD_Handler()
+void PortDIntHandler()
 {
 	handler();
 }
