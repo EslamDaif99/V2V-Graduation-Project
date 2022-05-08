@@ -1,6 +1,7 @@
 #ifndef _GPIO_H_
 #define	_GPIO_H_
 
+#include "Type.h"
 typedef enum
 {
 	/* List the GPIO Ports */
@@ -47,7 +48,7 @@ typedef enum
 #define PORT_LOW  0x00
 
 /*Initialization*/
-void GPIO_Init(GPIO_PORT_t port);
+void GPIO_Init(GPIO_PORT_t port,GPIO_PIN_t pin);
 /*For Pins*/
 void GPIO_SetPinDirection(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_Direction_t direction);
 void GPIO_SetPinState(GPIO_PORT_t port,GPIO_PIN_t pin,GPIO_State_t state);
