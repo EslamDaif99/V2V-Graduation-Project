@@ -5,7 +5,7 @@
 #include "GPIO.h"
 #include "tm4c123gh6pm.h"
 
-
+extern uint16_t Counts;
 void SpeedInit(void)
 {
 	SpeedPinConfig(SpeedAction);
