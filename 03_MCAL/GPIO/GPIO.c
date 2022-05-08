@@ -514,58 +514,50 @@ void GPIO_SetPortState(GPIO_PORT_t port,uint08_t state)
 
 	if (port == GPIO_PORTA)
 	{
-		switch (state)
-		{
-			case PORT_HIGH: GPIO_PORTA_DATA_R = state;  break;
-			case PORT_LOW:  GPIO_PORTA_DATA_R = state;  break;
-			default /*Do Nothing*/: break;
-		}
+		GPIO_PORTA_DATA_R = state;
 	}
 	else if (port == GPIO_PORTB)
 	{
-		switch (state)
-		{
-			case PORT_HIGH: GPIO_PORTB_DATA_R = state;  break;
-			case PORT_LOW:  GPIO_PORTB_DATA_R = state;  break;
-			default /*Do Nothing*/: break;
-		}
+	    GPIO_PORTB_DATA_R = state;
 	}
 	else if (port == GPIO_PORTC)
 	{
-		switch (state)
-		{
-			case PORT_HIGH: GPIO_PORTC_DATA_R = state;  break;
-			case PORT_LOW:  GPIO_PORTC_DATA_R = state;  break;
-			default /*Do Nothing*/: break;
-		}
+	    GPIO_PORTC_DATA_R = state;
 	}
 	else if (port == GPIO_PORTD)
 	{
-		switch (state)
-		{
-			case PORT_HIGH: GPIO_PORTD_DATA_R = state;  break;
-			case PORT_LOW:  GPIO_PORTD_DATA_R = state;  break;
-			default /*Do Nothing*/: break;
-		}
+        GPIO_PORTD_DATA_R = state;
 	}
 	else if (port == GPIO_PORTE)
 	{
-		switch (state)
-		{
-			case PORT_HIGH: GPIO_PORTE_DATA_R = state;  break;
-			case PORT_LOW:  GPIO_PORTE_DATA_R = state;  break;
-			default /*Do Nothing*/: break;
-		}
+        GPIO_PORTE_DATA_R = state;
 	}
 	else if (port == GPIO_PORTF)
 	{
-		switch (state)
-		{
-			case PORT_HIGH: GPIO_PORTF_DATA_R = state;  break;
-			case PORT_LOW:  GPIO_PORTF_DATA_R = state;  break;
-			default /*Do Nothing*/: break;
-		}
+        GPIO_PORTF_DATA_R = state;
 	}
 
 #endif
+}
+uint08_t GPIO_readPort(GPIO_PORT_t port){
+
+    uint08_t returned_value =0 ;
+
+        /*write port direction*/
+        switch(port){
+        case GPIO_PORTA :
+            returned_value =GPIO_PORTA_DATA_R ; break ;
+        case GPIO_PORTB :
+            returned_value =GPIO_PORTB_DATA_R ; break ;
+        case GPIO_PORTC :
+            returned_value =GPIO_PORTC_DATA_R ; break ;
+        case GPIO_PORTD :
+            returned_value =GPIO_PORTD_DATA_R ; break ;
+        case GPIO_PORTE :
+            returned_value =GPIO_PORTE_DATA_R ; break ;
+        case GPIO_PORTF :
+            returned_value =GPIO_PORTF_DATA_R ; break ;
+
+    }
+    return returned_value;
 }
