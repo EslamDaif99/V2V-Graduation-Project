@@ -59,8 +59,8 @@ void Motor_Init(void)
 
     /********MOTOR_1*******/
 	
-	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN1);
-	 GPIO_Init(MOTOR_1_PORT,MOTOR_1_IN2);
+	 GPIO_Init(MOTOR_1_PORT);
+	 GPIO_Init(MOTOR_1_PORT);
 	 GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN1,GPIO_DIRECTION_OUTPUT);
 	 GPIO_SetPinDirection(MOTOR_1_PORT,MOTOR_1_IN2,GPIO_DIRECTION_OUTPUT);
 	
@@ -70,8 +70,8 @@ void Motor_Init(void)
 	
 	/************Motor_2********/
 
-	GPIO_Init(MOTOR_2_PORT,MOTOR_2_IN1);
-	GPIO_Init(MOTOR_2_PORT,MOTOR_2_IN2);
+	GPIO_Init(MOTOR_2_PORT);
+	GPIO_Init(MOTOR_2_PORT);
     GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_IN1,GPIO_DIRECTION_OUTPUT);
 	GPIO_SetPinDirection(MOTOR_2_PORT,MOTOR_2_IN2,GPIO_DIRECTION_OUTPUT);
 
@@ -81,8 +81,8 @@ void Motor_Init(void)
 
 	/************Motor_3********/
 
-    GPIO_Init(MOTOR_3_PORT,MOTOR_3_IN1);
-    GPIO_Init(MOTOR_3_PORT,MOTOR_3_IN2);
+    GPIO_Init(MOTOR_3_PORT);
+    GPIO_Init(MOTOR_3_PORT);
     GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_IN1,GPIO_DIRECTION_OUTPUT);
 	GPIO_SetPinDirection(MOTOR_3_PORT,MOTOR_3_IN2,GPIO_DIRECTION_OUTPUT);
 
@@ -92,8 +92,8 @@ void Motor_Init(void)
 
 	/************Motor_4********/
 
-    GPIO_Init(MOTOR_4_PORT,MOTOR_4_IN1);
-    GPIO_Init(MOTOR_4_PORT,MOTOR_4_IN2);
+    GPIO_Init(MOTOR_4_PORT);
+    GPIO_Init(MOTOR_4_PORT);
     GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_IN1,GPIO_DIRECTION_OUTPUT);
 	GPIO_SetPinDirection(MOTOR_4_PORT,MOTOR_4_IN2,GPIO_DIRECTION_OUTPUT);
 
