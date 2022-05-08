@@ -15,6 +15,7 @@ void SpeedAction(void)
 {
 	Counts++;
 	/*For check*/
+	GPIO_Init(GPIO_PORTD,GPIO_PIN_1);
 	GPIO_SetPinDirection(GPIO_PORTD,GPIO_PIN_1,GPIO_DIRECTION_OUTPUT);
 	GPIO_SetPinState(GPIO_PORTD,GPIO_PIN_1,GPIO_STATE_HIGH);
 	/*Clear Flag*/
