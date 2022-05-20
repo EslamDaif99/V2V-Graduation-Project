@@ -1,0 +1,353 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.5                     
+******************************************************************************
+>> Linked Fri May 20 20:21:37 2022
+
+OUTPUT FILE NAME:   <V2V.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00003c55
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00003d22  0003c2de  R  X
+  SRAM                  20000000   00008000  00000304  00007cfc  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00003d28   00003d28    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00003a86   00003a86    r-x .text
+  00003cf8    00003cf8    00000030   00000030    r-- .cinit
+20000000    20000000    00000304   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    000000fe   00000000    rw- .bss
+  200002fe    200002fe    00000006   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00003a86     
+                  0000026c    00001a00     PWM.obj (.text)
+                  00001c6c    00000c54     GPIO.obj (.text)
+                  000028c0    00000724     UART.obj (.text)
+                  00002fe4    0000031c     Motor.obj (.text)
+                  00003300    000001d8     OS.obj (.text)
+                  000034d8    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.asm.obj (.text)
+                  0000368e    00000002     --HOLE-- [fill = 0]
+                  00003690    00000114     Bluetooth.obj (.text)
+                  000037a4    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.asm.obj (.text)
+                  000038a0    000000c0     Speed.obj (.text)
+                  00003960    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  000039fc    0000008c     INTPin.obj (.text)
+                  00003a88    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00003af0    00000064     LED.obj (.text)
+                  00003b54    00000044     SysTick.obj (.text)
+                  00003b98    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00003bdc    00000044                                   : fd_tou_t2.asm.obj (.text)
+                  00003c20    00000034     COM.obj (.text)
+                  00003c54    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00003c88    00000020                                   : u_tofd_t2.asm.obj (.text)
+                  00003ca8    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00003cc4    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00003cd2    0000000c     main.obj (.text)
+                  00003cde    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00003cea    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00003cee    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00003cf8    00000030     
+                  00003cf8    0000000c     (__TI_handler_table)
+                  00003d04    0000000a     (.cinit..data.load) [load image, compression = lzss]
+                  00003d0e    00000002     --HOLE-- [fill = 0]
+                  00003d10    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00003d18    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000200    000000fe     UNINITIALIZED
+                  20000200    000000f0     OS.obj (.bss:OS_TaskList)
+                  200002f0    00000004     INTPin.obj (.bss)
+                  200002f4    00000004     (.common:Load)
+                  200002f8    00000002     (.common:Counts)
+                  200002fa    00000002     (.common:SpeedValue)
+                  200002fc    00000001     LED.obj (.bss)
+                  200002fd    00000001     OS.obj (.bss)
+
+.data      0    200002fe    00000006     UNINITIALIZED
+                  200002fe    00000004     Bluetooth.obj (.data)
+                  20000302    00000002     Motor.obj (.data)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code    ro data   rw data
+       ------                         ----    -------   -------
+    .\
+       PWM.obj                        6656    0         4      
+       GPIO.obj                       3156    0         0      
+       UART.obj                       1828    0         0      
+       Motor.obj                      796     0         2      
+       OS.obj                         472     0         241    
+       tm4c123gh6pm_startup_ccs.obj   12      620       0      
+       Bluetooth.obj                  276     0         4      
+       Speed.obj                      192     0         4      
+       INTPin.obj                     140     0         4      
+       LED.obj                        100     0         1      
+       SysTick.obj                    68      0         0      
+       COM.obj                        52      0         0      
+       main.obj                       12      0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         13760   620       260    
+                                                               
+    C:\ti\ccs1110\ccs\tools\compiler\ti-cgt-arm_20.2.5.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       fd_add_t2.asm.obj              438     0         0      
+       fd_mul_t2.asm.obj              252     0         0      
+       memcpy_t2.asm.obj              156     0         0      
+       copy_decompress_lzss.c.obj     104     0         0      
+       autoinit.c.obj                 68      0         0      
+       fd_tou_t2.asm.obj              68      0         0      
+       boot_cortex_m.c.obj            52      0         0      
+       u_tofd_t2.asm.obj              32      0         0      
+       copy_zero_init.c.obj           28      0         0      
+       copy_decompress_none.c.obj     14      0         0      
+       exit.c.obj                     4       0         0      
+       pre_init.c.obj                 4       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         1220    0         0      
+                                                               
+       Stack:                         0       0         512    
+       Linker Generated:              0       46        0      
+    +--+------------------------------+-------+---------+---------+
+       Grand Total:                   14980   666       772    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00003d18 records: 2, size/record: 8, table size: 16
+	.data: load addr=00003d04, load size=0000000a bytes, run addr=200002fe, run size=00000006 bytes, compression=lzss
+	.bss: load addr=00003d10, load size=00000008 bytes, run addr=20000200, run size=000000fe bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00003cf8 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+0000377d  Bluetooth                     
+000036f1  Bluetooth_Control             
+00003691  Bluetooth_Init                
+000036d3  Bluetooth_Read                
+00003cef  C$$EXIT                       
+00003c21  COM_Init                      
+00003c23  COM_Update                    
+200002f8  Counts                        
+00003a59  DisableSpeedInt               
+00003a4d  EnableSpeedInt                
+0000244d  GPIO_GetPinState              
+00001c6d  GPIO_Init                     
+00001e65  GPIO_SetPinDirection          
+000022b9  GPIO_SetPinState              
+0000253d  GPIO_SetPortDirection         
+0000275b  GPIO_SetPortState             
+000027d3  GPIO_readPort                 
+00003af1  LED_Init                      
+00003b17  LED_Update                    
+200002f4  Load                          
+00003177  Motor_GoForward               
+00002fe5  Motor_Init                    
+000031cb  Motor_SetSpeed                
+0000312f  Motor_Start                   
+00003153  Motor_Stop                    
+0000312d  Motor_Update                  
+000034a9  OS_IncreamentTick             
+00003301  OS_Init                       
+00003425  OS_Update                     
+0000026d  PWMClockSet                   
+000003e7  PWMDiv                        
+00001165  PWMDutyCycleSet               
+00000b85  PWMGenConfigure               
+00000a65  PWMGenDisable                 
+00001aa1  PWMGenEnable                  
+00000fbd  PWMGenPeriodSet               
+00000419  PWMPinConfigure               
+00001c1f  PWM_Init                      
+00003a65  PortDIntHandler               
+200002fe  Received_data                 
+00003cdf  ResetISR                      
+000038eb  SpeedAction                   
+000039fd  SpeedPinConfig                
+200002fa  SpeedValue                    
+00003949  Speed_GetValue                
+000038a1  Speed_Init                    
+0000390b  Speed_Update                  
+00003b7b  SysTick_Handler               
+00003b59  SysTick_Init                  
+00003b83  SysTick_Update                
+000028c1  UART_Init                     
+00002f53  UART_Rx                       
+00002f25  UART_Tx                       
+00002f7f  UART_Update                   
+20000200  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000200  __STACK_TOP                   
+00003d18  __TI_CINIT_Base               
+00003d28  __TI_CINIT_Limit              
+00003cf8  __TI_Handler_Table_Base       
+00003d04  __TI_Handler_Table_Limit      
+00003b99  __TI_auto_init_nobinit_nopinit
+00003a89  __TI_decompress_lzss          
+00003cc5  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00003ca9  __TI_zero_init_nomemset       
+00003bdd  __aeabi_d2uiz                 
+000034e3  __aeabi_dadd                  
+000037a5  __aeabi_dmul                  
+000034d9  __aeabi_dsub                  
+00003961  __aeabi_memcpy                
+00003961  __aeabi_memcpy4               
+00003961  __aeabi_memcpy8               
+00003c89  __aeabi_ui2d                  
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+00003c55  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00003ceb  _system_pre_init              
+00003cef  abort                         
+ffffffff  binit                         
+20000300  duty_cycle                    
+20000302  freq                          
+00000000  g_pfnVectors                  
+00003cd3  main                          
+00003961  memcpy                        
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+0000026d  PWMClockSet                   
+000003e7  PWMDiv                        
+00000419  PWMPinConfigure               
+00000a65  PWMGenDisable                 
+00000b85  PWMGenConfigure               
+00000fbd  PWMGenPeriodSet               
+00001165  PWMDutyCycleSet               
+00001aa1  PWMGenEnable                  
+00001c1f  PWM_Init                      
+00001c6d  GPIO_Init                     
+00001e65  GPIO_SetPinDirection          
+000022b9  GPIO_SetPinState              
+0000244d  GPIO_GetPinState              
+0000253d  GPIO_SetPortDirection         
+0000275b  GPIO_SetPortState             
+000027d3  GPIO_readPort                 
+000028c1  UART_Init                     
+00002f25  UART_Tx                       
+00002f53  UART_Rx                       
+00002f7f  UART_Update                   
+00002fe5  Motor_Init                    
+0000312d  Motor_Update                  
+0000312f  Motor_Start                   
+00003153  Motor_Stop                    
+00003177  Motor_GoForward               
+000031cb  Motor_SetSpeed                
+00003301  OS_Init                       
+00003425  OS_Update                     
+000034a9  OS_IncreamentTick             
+000034d9  __aeabi_dsub                  
+000034e3  __aeabi_dadd                  
+00003691  Bluetooth_Init                
+000036d3  Bluetooth_Read                
+000036f1  Bluetooth_Control             
+0000377d  Bluetooth                     
+000037a5  __aeabi_dmul                  
+000038a1  Speed_Init                    
+000038eb  SpeedAction                   
+0000390b  Speed_Update                  
+00003949  Speed_GetValue                
+00003961  __aeabi_memcpy                
+00003961  __aeabi_memcpy4               
+00003961  __aeabi_memcpy8               
+00003961  memcpy                        
+000039fd  SpeedPinConfig                
+00003a4d  EnableSpeedInt                
+00003a59  DisableSpeedInt               
+00003a65  PortDIntHandler               
+00003a89  __TI_decompress_lzss          
+00003af1  LED_Init                      
+00003b17  LED_Update                    
+00003b59  SysTick_Init                  
+00003b7b  SysTick_Handler               
+00003b83  SysTick_Update                
+00003b99  __TI_auto_init_nobinit_nopinit
+00003bdd  __aeabi_d2uiz                 
+00003c21  COM_Init                      
+00003c23  COM_Update                    
+00003c55  _c_int00_noargs               
+00003c89  __aeabi_ui2d                  
+00003ca9  __TI_zero_init_nomemset       
+00003cc5  __TI_decompress_none          
+00003cd3  main                          
+00003cdf  ResetISR                      
+00003ceb  _system_pre_init              
+00003cef  C$$EXIT                       
+00003cef  abort                         
+00003cf8  __TI_Handler_Table_Base       
+00003d04  __TI_Handler_Table_Limit      
+00003d18  __TI_CINIT_Base               
+00003d28  __TI_CINIT_Limit              
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000200  __STACK_END                   
+20000200  __STACK_TOP                   
+200002f4  Load                          
+200002f8  Counts                        
+200002fa  SpeedValue                    
+200002fe  Received_data                 
+20000300  duty_cycle                    
+20000302  freq                          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[93 symbols]

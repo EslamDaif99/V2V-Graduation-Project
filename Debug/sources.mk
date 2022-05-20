@@ -112,11 +112,4 @@ PDE_DEPS__QUOTED :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
-01_Service/OS \
-02_HAL/LED \
-02_HAL/Motor \
-03_MCAL/GPIO \
-03_MCAL/SysTick \
-03_MCAL/UART \
-04_Drivers/PWM \
 

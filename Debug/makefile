@@ -10,16 +10,20 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Bluetooth.obj" \
+"./COM.obj" \
+"./GPIO.obj" \
+"./INTPin.obj" \
+"./LED.obj" \
+"./Motor.obj" \
+"./OS.obj" \
+"./PWM.obj" \
+"./Speed.obj" \
+"./SysTick.obj" \
+"./UART.obj" \
 "./main.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
-"./01_Service/OS/OS.obj" \
-"./02_HAL/LED/LED.obj" \
-"./02_HAL/Motor/Motor.obj" \
-"./03_MCAL/GPIO/GPIO.obj" \
-"./03_MCAL/SysTick/SysTick.obj" \
-"./03_MCAL/UART/UART.obj" \
-"./04_Drivers/PWM/PWM.obj" \
-"../tm4c123gh6pm.cmd" \
+"../tm4c1231h6pm.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
 
@@ -31,21 +35,7 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
--include 01_Service/OS/subdir_vars.mk
--include 02_HAL/LED/subdir_vars.mk
--include 02_HAL/Motor/subdir_vars.mk
--include 03_MCAL/GPIO/subdir_vars.mk
--include 03_MCAL/SysTick/subdir_vars.mk
--include 03_MCAL/UART/subdir_vars.mk
--include 04_Drivers/PWM/subdir_vars.mk
 -include subdir_rules.mk
--include 01_Service/OS/subdir_rules.mk
--include 02_HAL/LED/subdir_rules.mk
--include 02_HAL/Motor/subdir_rules.mk
--include 03_MCAL/GPIO/subdir_rules.mk
--include 03_MCAL/SysTick/subdir_rules.mk
--include 03_MCAL/UART/subdir_rules.mk
--include 04_Drivers/PWM/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -142,42 +132,42 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-V2V_GP.out \
+V2V.out \
 
 EXE_OUTPUTS__QUOTED += \
-"V2V_GP.out" \
+"V2V.out" \
 
 BIN_OUTPUTS += \
-V2V_GP.hex \
+V2V.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"V2V_GP.hex" \
+"V2V.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "V2V_GP.out"
+	@$(MAKE) --no-print-directory -Onone "V2V.out"
 
 # Tool invocations
-V2V_GP.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+V2V.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"V2V_GP.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="V2V_GP_linkInfo.xml" --rom_model -o "V2V_GP.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C1231H6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"V2V.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="V2V_linkInfo.xml" --rom_model -o "V2V.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-V2V_GP.hex: $(EXE_OUTPUTS)
+V2V.hex: $(EXE_OUTPUTS)
 	@echo 'Building secondary target: "$@"'
 	@echo 'Invoking: Arm Hex Utility'
-	"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "V2V_GP.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "V2V.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "01_Service\OS\OS.obj" "02_HAL\LED\LED.obj" "02_HAL\Motor\Motor.obj" "03_MCAL\GPIO\GPIO.obj" "03_MCAL\SysTick\SysTick.obj" "03_MCAL\UART\UART.obj" "04_Drivers\PWM\PWM.obj" 
-	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "01_Service\OS\OS.d" "02_HAL\LED\LED.d" "02_HAL\Motor\Motor.d" "03_MCAL\GPIO\GPIO.d" "03_MCAL\SysTick\SysTick.d" "03_MCAL\UART\UART.d" "04_Drivers\PWM\PWM.d" 
+	-$(RM) "Bluetooth.obj" "COM.obj" "GPIO.obj" "INTPin.obj" "LED.obj" "Motor.obj" "OS.obj" "PWM.obj" "Speed.obj" "SysTick.obj" "UART.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
+	-$(RM) "Bluetooth.d" "COM.d" "GPIO.d" "INTPin.d" "LED.d" "Motor.d" "OS.d" "PWM.d" "Speed.d" "SysTick.d" "UART.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
